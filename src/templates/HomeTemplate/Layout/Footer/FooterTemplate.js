@@ -12,8 +12,8 @@ import { ImAccessibility } from 'react-icons/im';
 
 export const FooterTemplate = () => {
   return (
-    <footer className='py-6 '>
-      <div className='container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50'>
+    <footer className='py-6 border-t flex justify-center items-center'>
+      <div className='container px-6 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50'>
         <div className='grid grid-cols-12 gap-y-4 xl:flex xl:justify-between'>
           <div className='col-span-6 text-center md:text-left md:col-span-3'>
             <p className='pb-1 text-lg font-medium'>Category</p>

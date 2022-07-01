@@ -10,10 +10,64 @@
   }
   body {
     font-family: 'Poppins', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
 // custom antd
 .ant-drawer-header {
   border-bottom: none;
+}
+
+.dropdown-work {
+  top: 330px !important;
+  .ant-checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  li.ant-dropdown-menu-item {
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+// custom swiper
+.swiper-wrapper {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid transparent;
+    text-align: center;
+    transition: all 0.3s linear;
+    &:hover {
+      border-bottom-color: rgb(83, 223, 83);
+    }
+  }
+}
+
+.swiper {
+  padding: 0 10px;
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    font-size: 30px;
+  }
+  .swiper-button-next {
+    right: -5px;
+  }
+  .swiper-button-prev {
+    left: -5px;
+  }
 }
