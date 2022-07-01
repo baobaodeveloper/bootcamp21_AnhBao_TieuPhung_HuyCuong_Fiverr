@@ -1,13 +1,13 @@
-import React from 'react'
-import Slide from '../../components/slide/Slide'
+import React from 'react';
+import SlideHome from '../../components/slide/SlideHome';
 
 export const HomePage = () => {
   return (
-    <div className='mt-28 w-4/5 mx-auto'>
-      <Slide />
+    <div className='h-full w-full'>
+      <SlideHome />
       {/* <Article />
       <SlideArticle />
       <Category /> */}
     </div>
-  )
-}
+  );
+};
