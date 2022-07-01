@@ -91,7 +91,7 @@ export const HeaderTemplate = ({ position }) => {
         </div>
       </Drawer>
       <header
-        className={` text-gray-800 bg-white ${position}  w-screen top-0`}
+        className={` text-gray-800 bg-white ${position} z-10  w-screen top-0`}
       >
         <div className='container flex justify-between items-center h-16 mx-auto py-12'>
           <div className='flex items-center'>

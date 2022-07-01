@@ -49,103 +49,105 @@ export const HeaderTypeWork = () => {
     });
   });
   return (
-    <Swiper
-      modules={[Navigation]}
-      navigation={true}
-      slidesPerView={slider}
-      spaceBetween={10}
-      slidesPerGroup={group}
-    >
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Graphics & Design</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Digital Marketing</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Writing & Translation</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Video & Animation</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Music & Audio</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Programming & Tech</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Business</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Lifestyle</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-      <SwiperSlide>
-        <Dropdown overlay={menu}>
-          <span
-            className='cursor-pointer'
-            onClick={(e) => e.preventDefault()}
-          >
-            <Space>Trending</Space>
-          </span>
-        </Dropdown>
-      </SwiperSlide>
-    </Swiper>
+    <div className='slider-type_work'>
+      <Swiper
+        modules={[Navigation]}
+        navigation={true}
+        slidesPerView={slider}
+        spaceBetween={10}
+        slidesPerGroup={group}
+      >
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Graphics & Design</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Digital Marketing</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Writing & Translation</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Video & Animation</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Music & Audio</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Programming & Tech</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Business</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Lifestyle</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Dropdown overlay={menu}>
+            <span
+              className='cursor-pointer'
+              onClick={(e) => e.preventDefault()}
+            >
+              <Space>Trending</Space>
+            </span>
+          </Dropdown>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };

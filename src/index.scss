@@ -40,34 +40,36 @@
   }
 }
 // custom swiper
-.swiper-wrapper {
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .swiper-slide {
+.slider-type_work {
+  .swiper-wrapper {
+    height: 90px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid transparent;
-    text-align: center;
-    transition: all 0.3s linear;
-    &:hover {
-      border-bottom-color: rgb(83, 223, 83);
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 4px solid transparent;
+      text-align: center;
+      transition: all 0.3s linear;
+      &:hover {
+        border-bottom-color: rgb(83, 223, 83);
+      }
     }
   }
-}
 
-.swiper {
-  padding: 0 10px;
-  .swiper-button-prev:after,
-  .swiper-button-next:after {
-    font-size: 30px;
-  }
-  .swiper-button-next {
-    right: -5px;
-  }
-  .swiper-button-prev {
-    left: -5px;
+  .swiper {
+    padding: 0 10px;
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+      font-size: 30px;
+    }
+    .swiper-button-next {
+      right: -5px;
+    }
+    .swiper-button-prev {
+      left: -5px;
+    }
   }
 }
