@@ -17,13 +17,20 @@ function App() {
         <Route
           path='/'
           element={
-            <HomeTemplate>
+            <HomeTemplate position='fixed'>
               <HomePage />
             </HomeTemplate>
           }
         />
         <Route path='/list_type' element={<ListTypeWorkPage />} />
-        <Route path='/list_work' element={<ListWorkPage />} />
+        <Route
+          path='/list_work'
+          element={
+            <HomeTemplate position=''>
+              <ListWorkPage />
+            </HomeTemplate>
+          }
+        />
         <Route path='/list_work/:id' element={<WorkDetailPage />} />
         <Route path='/user' element={<UserPage />} />
         <Route path='/register' element={<Register />} />

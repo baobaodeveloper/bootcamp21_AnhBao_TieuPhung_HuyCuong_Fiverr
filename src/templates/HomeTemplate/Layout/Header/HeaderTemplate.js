@@ -4,8 +4,9 @@ import { RiEarthLine } from 'react-icons/ri';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Drawer } from 'antd';
 import ButtonGreen from '../../../../components/button/ButtonGreen';
+import { HeaderTypeWork } from './HeaderTypeWork';
 
-export const HeaderTemplate = () => {
+export const HeaderTemplate = ({ position }) => {
   const [visible, setVisible] = useState(false);
 
   const showDrawer = () => {
@@ -89,12 +90,14 @@ export const HeaderTemplate = () => {
           </NavLink>
         </div>
       </Drawer>
-      <header className='p-4 text-gray-800 bg-white  fixed w-screen top-0'>
-        <div className='container flex justify-between items-center h-16 mx-auto'>
+      <header
+        className={` text-gray-800 bg-white ${position}  w-screen top-0`}
+      >
+        <div className='container flex justify-between items-center h-16 mx-auto py-12'>
           <div className='flex items-center'>
             <button
               onClick={() => showDrawer()}
-              className='p-4 sm:hidden text-3xl font-semibold mt-1 cursor-pointer'
+              className='p-4 xl:hidden text-3xl font-semibold mt-1 cursor-pointer'
             >
               <GiHamburgerMenu />
             </button>
@@ -143,7 +146,7 @@ export const HeaderTemplate = () => {
               </button>
             </div>
           </div>
-          <ul className='items-stretch lg:flex hidden space-x-3  ml-auto'>
+          <ul className='items-stretch xl:flex hidden space-x-3  ml-auto'>
             <li className='flex text-xl font-semibold'>
               <NavLink
                 to='/'
@@ -161,7 +164,7 @@ export const HeaderTemplate = () => {
               </NavLink>
             </li>
 
-            <li className=' text-xl font-semibold xl:flex hidden'>
+            <li className=' text-xl font-semibold flex'>
               <NavLink
                 to='/'
                 className='flex items-center px-4 gap-x-2 hover:text-green-500 transition-all'
@@ -171,7 +174,7 @@ export const HeaderTemplate = () => {
               </NavLink>
             </li>
 
-            <li className=' text-xl font-semibold xl:flex hidden'>
+            <li className=' text-xl font-semibold flex'>
               <NavLink
                 to='/'
                 className='flex items-center  px-4 hover:text-green-500 transition-all'
@@ -202,6 +205,11 @@ export const HeaderTemplate = () => {
             >
               Join
             </NavLink>
+          </div>
+        </div>
+        <div className='border-t border-b px-4'>
+          <div className='container mx-auto text-lg font-semibold'>
+            <HeaderTypeWork />
           </div>
         </div>
       </header>
