@@ -22,7 +22,14 @@ function App() {
             </HomeTemplate>
           }
         />
-        <Route path='/list_type' element={<ListTypeWorkPage />} />
+        <Route
+          path='/list_type'
+          element={
+            <HomeTemplate position=''>
+              <ListTypeWorkPage />
+            </HomeTemplate>
+          }
+        />
         <Route
           path='/list_work'
           element={
