@@ -32,7 +32,7 @@ export const CardWork = () => {
     />
   );
   return (
-    <div className='xl:w-1/4 md:w-1/2 w-full p-4'>
+    <div className=' w-full '>
       <div className=' rounded-md overflow-hidden border bg-white w-full'>
         <div className='h-[310px]  w-full'>
           <SliderImage />

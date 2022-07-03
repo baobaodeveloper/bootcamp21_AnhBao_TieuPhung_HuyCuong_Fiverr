@@ -16,7 +16,7 @@ export const TopRated = () => {
 
       <section className='text-gray-600 body-font'>
         <div className='container py-8 mx-auto'>
-          <div className='flex flex-wrap -m-4'>
+          <div className='grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 md:p-0 p-8'>
             <CardWork />
             <CardWork />
             <CardWork />
