@@ -27,7 +27,7 @@
 }
 
 .dropdown-work {
-  top: 330px !important;
+  top: 360px !important;
   .ant-checkbox-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -39,6 +39,58 @@
     }
   }
 }
+#delivery-time {
+  padding: 10px;
+  top: 330px !important;
+  .ant-radio-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    .ant-radio-wrapper {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+#input-rangeMoney {
+  .ant-input-number-group-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+  }
+  .ant-input-number-group-addon {
+    font-size: 20px;
+    svg {
+      font-weight: 700;
+    }
+  }
+}
+
+#switch-sort {
+  .ant-switch.ant-switch-checked {
+    background-color: #1890ff;
+  }
+  .ant-switch {
+    background-color: rgb(154, 152, 152);
+  }
+}
+
+.sort-relevance {
+  .ant-dropdown-menu-item {
+    margin: 10px 0;
+  }
+}
+
+.ant-popover-inner {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
+.ant-popover-arrow-content::before {
+  background-color: rgba($color: #000000, $alpha: 0.6);
+}
+
 // custom swiper
 .slider-type_work {
   .swiper-wrapper {
@@ -71,5 +123,53 @@
     .swiper-button-prev {
       left: -5px;
     }
+  }
+}
+
+#slider-img-card {
+  .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events {
+    height: 100%;
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev:after {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: white;
+    height: 35px;
+    width: 40px;
+  }
+  .swiper-button-next {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    right: -5px;
+    transform: translateX(100%);
+    transition: all 0.15s linear;
+  }
+  .swiper-button-prev {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    left: -5px;
+    transform: translateX(-100%);
+    transition: all 0.15s linear;
+  }
+  &:hover {
+    .swiper-button-next {
+      transform: translateX(0);
+    }
+    .swiper-button-prev {
+      transform: translateX(0);
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: white;
+  }
+  .swiper-pagination-bullet {
+    background-color: white !important;
+    opacity: 1;
   }
 }

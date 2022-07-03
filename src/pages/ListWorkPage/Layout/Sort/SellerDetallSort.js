@@ -1,11 +1,10 @@
-import { Button, Checkbox, Menu } from 'antd';
+import { Checkbox, Menu } from 'antd';
 import { useState } from 'react';
 import { SortWork } from './SortWork';
 
-export const ServiceOptionSort = () => {
+export const SellerDetallSort = () => {
   const [visible, setVisible] = useState(false);
   const handleVisibleChange = (flag) => {
-    console.log(flag);
     setVisible(flag);
   };
   const onChange = (checkedValues) => {
@@ -15,38 +14,118 @@ export const ServiceOptionSort = () => {
     {
       label: (
         <div className='flex gap-x-3 items-center'>
-          <span className='text-lg font-semibold'>HTML & CSS</span>
+          <span className='text-lg font-semibold'>
+            Top Rate Seller
+          </span>
           <span>(2345)</span>
         </div>
       ),
-      value: 'HTML & CSS',
+      value: 'Top Rate Seller',
     },
     {
       label: (
         <div className='flex gap-x-3 items-center'>
-          <span className='text-lg font-semibold'>PHP</span>
+          <span className='text-lg font-semibold'>Level Two</span>
           <span>(4523)</span>
         </div>
       ),
-      value: 'PHP',
+      value: 'Level Two',
     },
     {
       label: (
         <div className='flex gap-x-3 items-center'>
-          <span className='text-lg font-semibold'>JavaScript</span>
+          <span className='text-lg font-semibold'>Level One</span>
           <span>(453)</span>
         </div>
       ),
-      value: 'JavaScript',
+      value: 'Level One',
     },
     {
       label: (
         <div className='flex gap-x-3 items-center'>
-          <span className='text-lg font-semibold'>Other</span>
+          <span className='text-lg font-semibold'>New Seller</span>
           <span>(23)</span>
         </div>
       ),
-      value: 'Other',
+      value: 'New Seller',
+    },
+  ];
+  const options1 = [
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>Vietnamese</span>
+          <span>(2345)</span>
+        </div>
+      ),
+      value: 'Vietnameser',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>English</span>
+          <span>(4523)</span>
+        </div>
+      ),
+      value: 'English',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>Urdu</span>
+          <span>(453)</span>
+        </div>
+      ),
+      value: 'Urdu',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>Hindi</span>
+          <span>(23)</span>
+        </div>
+      ),
+      value: 'Hindi',
+    },
+  ];
+  const options2 = [
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>United State</span>
+          <span>(2345)</span>
+        </div>
+      ),
+      value: 'United State',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>
+            United Kingdom
+          </span>
+          <span>(4523)</span>
+        </div>
+      ),
+      value: 'United Kingdom',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>Canada</span>
+          <span>(453)</span>
+        </div>
+      ),
+      value: 'Canada',
+    },
+    {
+      label: (
+        <div className='flex gap-x-3 items-center'>
+          <span className='text-lg font-semibold'>Germany</span>
+          <span>(23)</span>
+        </div>
+      ),
+      value: 'Germany',
     },
   ];
 
@@ -57,17 +136,15 @@ export const ServiceOptionSort = () => {
           label: (
             <>
               <h3 className='text-2xl font-semibold mb-3'>
-                Programming language
+                Seller Level
               </h3>
               <Checkbox.Group
                 onClick={(e) => e.preventDefault()}
                 options={options}
                 onChange={onChange}
               />
-              <button className='text-green-500 my-2 font-semibold text-lg'>
-                +5 more
-              </button>
-              <div className='w-full border'></div>
+
+              <div className='w-full border my-4'></div>
             </>
           ),
           key: '1',
@@ -76,11 +153,11 @@ export const ServiceOptionSort = () => {
           label: (
             <>
               <h3 className='text-2xl font-semibold mb-3'>
-                Coding Expertise
+                Seller Speaks
               </h3>
               <Checkbox.Group
                 onClick={(e) => e.preventDefault()}
-                options={options}
+                options={options1}
                 onChange={onChange}
               />
               <button className='text-green-500 my-2 font-semibold text-lg'>
@@ -95,11 +172,11 @@ export const ServiceOptionSort = () => {
           label: (
             <>
               <h3 className='text-2xl font-semibold mb-3'>
-                Service Includes
+                Seller Live In
               </h3>
               <Checkbox.Group
                 onClick={(e) => e.preventDefault()}
-                options={options}
+                options={options2}
                 onChange={onChange}
               />
 
@@ -128,7 +205,7 @@ export const ServiceOptionSort = () => {
     <SortWork
       handleVisibleChange={handleVisibleChange}
       visible={visible}
-      title='Service Options'
+      title='Seller Detalls'
       menu={menu}
     />
   );

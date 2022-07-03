@@ -1,6 +1,6 @@
 import { Dropdown, Space } from 'antd';
 import { useState } from 'react';
-import { ButtonDefault } from '../../../components/button/ButtonDefault';
+import { ButtonDefault } from '../../../../components/button/ButtonDefault';
 
 export const SortWork = ({
   menu,
@@ -9,7 +9,7 @@ export const SortWork = ({
   visible,
 }) => {
   const [arrow, setArrow] = useState(true);
-  console.log(visible);
+
   return (
     <Dropdown
       overlayClassName='dropdown-work'

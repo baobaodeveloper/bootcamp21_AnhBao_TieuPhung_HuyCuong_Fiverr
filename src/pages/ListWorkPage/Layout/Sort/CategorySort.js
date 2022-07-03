@@ -1,8 +1,8 @@
 import { Dropdown, Menu, message, Space } from 'antd';
 import { useState } from 'react';
-import { ButtonDefault } from '../../../components/button/ButtonDefault';
+import { ButtonDefault } from '../../../../components/button/ButtonDefault';
 
-const CategorySort = () => {
+export const CategorySort = () => {
   const onClick = ({ key }) => {
     message.info(`Click on item ${key}`);
   };
@@ -67,5 +67,3 @@ const CategorySort = () => {
     </Dropdown>
   );
 };
-
-export default CategorySort;
