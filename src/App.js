@@ -38,7 +38,14 @@ function App() {
             </HomeTemplate>
           }
         />
-        <Route path='/list_work/:id' element={<WorkDetailPage />} />
+        <Route
+          path='/list_work/:id'
+          element={
+            <HomeTemplate position=''>
+              <WorkDetailPage />
+            </HomeTemplate>
+          }
+        />
         <Route path='/user' element={<UserPage />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<LoginPage />} />

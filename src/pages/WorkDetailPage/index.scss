@@ -1,0 +1,18 @@
+#number-like {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    transform: translate(-50%, -50%) rotate(-45deg);
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid #e5e7eb;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+
+    background-color: white;
+  }
+}
