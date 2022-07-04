@@ -1,5 +1,12 @@
 import React from 'react';
+import { NavTypeWork } from '../../components/NavTypeWork/NavTypeWork';
+
 
 export const WorkDetailPage = () => {
-  return <div>WorkDetailPage</div>;
+  
+  return (
+    <div>
+      <NavTypeWork />
+    </div>
+  );
 };
