@@ -1,10 +1,10 @@
 import React from 'react';
-import SlideHome from '../../components/slide/SlideHome';
+import Hero from './../../components/hero/Hero';
 
 export const HomePage = () => {
   return (
     <div className='h-full w-full'>
-      <SlideHome />
+      <Hero />
       {/* <Article />
       <SlideArticle />
       <Category /> */}
