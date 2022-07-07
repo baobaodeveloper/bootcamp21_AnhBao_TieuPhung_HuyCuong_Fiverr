@@ -10,7 +10,7 @@
         & .seller-name {
           @apply lg:flex items-end justify-end hidden container mx-auto;
           & p {
-            @apply text-white p-8 inline-block px-0;
+            @apply text-white py-8 inline-block px-0;
           }
           &.show-stars p {
             @apply hidden lg:block before:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/five_stars.e5c37f5.svg')]
@@ -54,7 +54,7 @@
               }
               & button {
                 @apply text-center font-bold h-12 text-base py-3 px-6 lg:rounded-tr lg:rounded-br 
-                   bg-green-500 cursor-pointer shrink-0 leading-none relative mt-4
+                   bg-green-500 cursor-pointer leading-none relative mt-4
                     lg:mt-0 rounded border-none w-full hover:bg-green-600;
               }
             }
@@ -67,8 +67,8 @@
             & li {
               @apply flex mr-3 whitespace-nowrap;
               & a {
-                @apply no-underline bg-transparent leading-6 font-semibold rounded-[40px] 
-                  border-solid border px-3 z-[4] hover:bg-white hover:text-gray-900;
+                @apply no-underline leading-6 font-semibold rounded-[40px] 
+                 border px-3 z-[4] hover:bg-white hover:text-gray-900;
               }
             }
           }
