@@ -23,9 +23,6 @@ export default function Hero() {
           disableOnInteraction: false,
         }}
         effect={"fade"}
-        pagination={{
-          clickable: true,
-        }}
         modules={[EffectFade, Autoplay]}
         className="hero-slide relative mb-0 mx-auto"
       >
