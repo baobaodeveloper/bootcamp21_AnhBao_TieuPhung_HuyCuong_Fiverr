@@ -101,8 +101,8 @@ export default function Category() {
   ];
 
   const listImg = dataImg.map((data) => (
-    <div class='subcategory-wrapper'>
-      <a href={'#'} class='subcategory'>
+    <div key={data.title} className='subcategory-wrapper'>
+      <a href={"#"} className='subcategory'>
         <h4>
           <small>{data.title}</small>
           {data.department}
