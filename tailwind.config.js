@@ -11,6 +11,7 @@ module.exports = {
       },
       backgroundSize: {
         "arrow-size": "16px 64px",
+        "selling-size": "80px",
       },
     },
   },
