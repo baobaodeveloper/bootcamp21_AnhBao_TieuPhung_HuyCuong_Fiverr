@@ -29,14 +29,14 @@
                 @apply h-[345px];
                 & a {
                     & h4 {
-                        @apply relative z-[1] text-white p-4 md:text-lg leading-tight font-bold;
+                      @apply relative z-[1] text-white p-4 text-2xl font-bold;
                     }
                     & small {
-                        @apply text-base leading-5 block font-normal text-white;
+                      @apply text-sm block font-normal;
                     }
                 }
                 & img {
-                    @apply object-cover absolute h-[345px] rounded top-0;
+                    @apply object-cover absolute h-[345px] rounded top-0 hover:opacity-80;
                 }
             }
         }
