@@ -9,14 +9,15 @@
     & .slider-package {
       @apply lg:h-[345px];
       & .slick-slider {
+        @apply lg:-mx-[18px];
         & button {
           @apply text-[0px];
           &.slick-prev {
-            @apply rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+            @apply lg:left-[-8px] rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
                 after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
           }
           &.slick-next {
-            @apply lg:right-5 rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+            @apply lg:right-[8px] rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
                 after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
           }
           &.slick-arrow {
@@ -24,9 +25,11 @@
           }
         }
         & .slick-list {
-            @apply container;
+            & .slick-slide {
+              @apply lg:px-[18px];
+            }
             & .subcategory-wrapper {
-                @apply h-[345px];
+                @apply h-[345px] lg:w-[257px];
                 & a {
                     & h4 {
                       @apply relative z-[1] text-white p-4 text-2xl font-bold;
