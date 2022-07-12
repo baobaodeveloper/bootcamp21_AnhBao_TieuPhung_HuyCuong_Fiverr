@@ -1,0 +1,55 @@
+@tailwind components;
+
+@layer components {
+  .testimonials-wrapper {
+    @apply container lg:mb-24 sm:mb-20 mx-auto mb-12 lg:h-[315px];
+    & .slick-slider {
+      @apply lg:h-[315px];
+      & button {
+        @apply text-[0px];
+        &.slick-prev {
+          @apply rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+        }
+        &.slick-next {
+          @apply rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+        }
+        &.slick-arrow {
+          @apply bg-white absolute z-[4] top-1/2 w-12 h-12 -mt-4 text-center shadow-arrow border-0 leading-none;
+        }
+      }
+      & .testimonial {
+        @apply flex items-center flex-row lg:h-[315px];
+        & .testimonial-modal {
+            @apply lg:w-[40%] min-h-[250px] flex relative items-center;
+            & .picture-wrapper {
+                @apply relative cursor-pointer;
+                & picture {
+                    @apply flex after:content-[''] after:inline-block after:h-20 after:w-20 after:absolute after:top-[50%] after:bg-selling-size after:left-[50%] after:bg-no-repeat
+                    after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png')] after:translate-x-[-50%] after:translate-y-[-50%];
+                }
+            }
+        }
+        & .text-content {
+            @apply lg:w-[60%] lg:max-w-[707px] lg:pr-12 lg:pl-16;
+            & h5 {
+                @apply font-normal text-[#74767e] pb-4 sm:text-xl leading-snug;
+                & .testimonial-logo {
+                    @apply border-l border-[#c5c6c9] ml-4;
+                    & img {
+                        @apply inline-block lg:ml-3 h-8 align-middle;
+                    }
+                }
+            }
+            & blockquote {
+                @apply text-2xl leading-10 text-[#003912];
+                & i {
+                    @apply font-medium;
+                }
+            }
+        }
+      }
+    }
+  }
+}
