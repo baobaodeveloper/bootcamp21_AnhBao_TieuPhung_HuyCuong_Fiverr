@@ -1,17 +1,15 @@
-.ant-input,
-.ant-input-affix-wrapper {
-  border: none;
-  border-bottom: 3px solid black;
-}
-
-
 // Form Login
-
 
 .form {
   width: 30%;
+  .ant-input,
+  .ant-input-affix-wrapper {
+    border: none;
+    border-bottom: 3px solid black;
+  }
 
-  .ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
+  .ant-form-item-label
+    > label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
     content: '';
   }
 
