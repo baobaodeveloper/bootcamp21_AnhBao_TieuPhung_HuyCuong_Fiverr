@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Description = () => {
   return (
-    <div>
+    <div id='description'>
       <div className='flex flex-col items-start gap-y-4 text-lg'>
         <h3 className='text-2xl font-semibold'>About This Gig</h3>
         <span className='font-semibold  bg-[#ffecd1]'>

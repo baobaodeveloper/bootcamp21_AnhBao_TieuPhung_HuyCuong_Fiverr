@@ -59,43 +59,37 @@ export const MenuWorkDetail = () => {
         <div className='flex  items-center gap-x-5 text-lg text-[#95979d] font-semibold'>
           <a
             className='py-3 hover:text-[#95979d] text-center border-b-2 border-transparent hover:border-green-400'
-            href='Overview'
+            href='#overview'
           >
             Overview
           </a>
           <a
             className='py-3 hidden xl:inline-block hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='Description'
+            href='#description'
           >
             Description
           </a>
           <a
             className='py-3 hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='About_seller'
+            href='#about_seller'
           >
             About the seller
           </a>
           <a
-            className='py-3 hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='Compare_Package'
-          >
-            Compare Package
-          </a>
-          <a
             className='py-3 hidden xl:inline-block  hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='Recommendations'
+            href='#recommendations'
           >
             Recommendations
           </a>
           <a
             className='py-3 hidden xl:inline-block  hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='FAQ'
+            href='#faq'
           >
             FAQ
           </a>
           <a
             className='py-3 hover:text-[#95979d] border-b-2 border-transparent hover:border-green-400'
-            href='Reviews'
+            href='#reviews'
           >
             Reviews
           </a>

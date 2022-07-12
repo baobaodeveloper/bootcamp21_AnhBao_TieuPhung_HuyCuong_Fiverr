@@ -9,7 +9,10 @@ import { CardWork } from '../../ListWorkPage/Layout/ListWork/CardWork';
 
 export const Recommandations = () => {
   return (
-    <div className='border rounded-md py-8 bg-[#fafafa]'>
+    <div
+      id='recommendations'
+      className='border rounded-md py-8 bg-[#fafafa]'
+    >
       <h3 className='text-2xl font-semibold px-8'>
         Recommended For You{' '}
       </h3>
