@@ -15,6 +15,7 @@
     font-family: 'Poppins', sans-serif;
     width: 100%;
     overflow-x: hidden;
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -31,20 +32,24 @@
 
 .dropdown-work {
   top: 360px !important;
+
   .ant-checkbox-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
+
   li.ant-dropdown-menu-item {
     &:hover {
       background-color: white;
     }
   }
 }
+
 #delivery-time {
   padding: 10px;
   top: 330px !important;
+
   .ant-radio-group {
     display: flex;
     flex-direction: column;
@@ -63,8 +68,10 @@
     display: inline-block;
     width: 150px;
   }
+
   .ant-input-number-group-addon {
     font-size: 20px;
+
     svg {
       font-weight: 700;
     }
@@ -75,6 +82,7 @@
   .ant-switch.ant-switch-checked {
     background-color: #1890ff;
   }
+
   .ant-switch {
     background-color: rgb(154, 152, 152);
   }
@@ -101,6 +109,7 @@
     height: 34px;
     margin-left: 8px;
   }
+
   .ant-pagination-item-link {
     display: flex;
     justify-content: center;
@@ -116,6 +125,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .swiper-slide {
       display: flex;
       justify-content: center;
@@ -123,6 +133,7 @@
       border-bottom: 4px solid transparent;
       text-align: center;
       transition: all 0.3s linear;
+
       &:hover {
         border-bottom-color: rgb(83, 223, 83);
       }
@@ -131,13 +142,16 @@
 
   .swiper {
     padding: 0 10px;
+
     .swiper-button-prev:after,
     .swiper-button-next:after {
       font-size: 30px;
     }
+
     .swiper-button-next {
       right: -5px;
     }
+
     .swiper-button-prev {
       left: -5px;
     }
@@ -148,18 +162,21 @@
   .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events {
     height: 100%;
   }
+
   .swiper-button-next::after,
   .swiper-button-prev:after {
     font-size: 16px;
     font-weight: 700;
     line-height: 1;
   }
+
   .swiper-button-next,
   .swiper-button-prev {
     background-color: white;
     height: 35px;
     width: 40px;
   }
+
   .swiper-button-next {
     border-top-left-radius: 50%;
     border-bottom-left-radius: 50%;
@@ -167,6 +184,7 @@
     transform: translateX(100%);
     transition: all 0.15s linear;
   }
+
   .swiper-button-prev {
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
@@ -174,10 +192,12 @@
     transform: translateX(-100%);
     transition: all 0.15s linear;
   }
+
   &:hover {
     .swiper-button-next {
       transform: translateX(0);
     }
+
     .swiper-button-prev {
       transform: translateX(0);
     }
@@ -186,6 +206,7 @@
   .swiper-pagination-bullet-active {
     background-color: white;
   }
+
   .swiper-pagination-bullet {
     background-color: white !important;
     opacity: 1;
@@ -194,10 +215,12 @@
 
 #collapse > .ant-collapse {
   background-color: white;
+
   & > .ant-collapse-item > .ant-collapse-header {
     font-size: 20px;
     font-weight: 600;
   }
+
   & > .ant-collapse-item > .ant-collapse-content {
     font-size: 18px;
     font-weight: 400;

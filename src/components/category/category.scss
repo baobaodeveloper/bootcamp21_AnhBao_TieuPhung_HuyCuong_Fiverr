@@ -1,0 +1,49 @@
+@tailwind components;
+
+@layer components {
+  .category-carousel {
+    @apply lg:h-[410px] lg:mb-24 sm:mb-20 mx-auto mb-12 container;
+    & h2 {
+      @apply lg:pb-6 pb-5 sm:text-3xl sm:leading-tight text-2xl leading-snug font-bold;
+    }
+    & .slider-package {
+      @apply lg:h-[345px];
+      & .slick-slider {
+        @apply lg:-mx-[18px];
+        & button {
+          @apply text-[0px];
+          &.slick-prev {
+            @apply lg:left-[-8px] rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+          }
+          &.slick-next {
+            @apply lg:right-[8px] rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+          }
+          &.slick-arrow {
+            @apply bg-white absolute z-[4] top-1/2 w-12 h-12 -mt-4 text-center shadow-arrow border-0 leading-none;
+          }
+        }
+        & .slick-list {
+            & .slick-slide {
+              @apply lg:px-[18px];
+            }
+            & .subcategory-wrapper {
+                @apply h-[345px] lg:w-[257px];
+                & a {
+                    & h4 {
+                      @apply relative z-[1] text-white p-4 text-2xl font-bold;
+                    }
+                    & small {
+                      @apply text-sm block font-normal;
+                    }
+                }
+                & img {
+                    @apply object-cover absolute h-[345px] rounded top-0 hover:opacity-80;
+                }
+            }
+        }
+      }
+    }
+  }
+}
