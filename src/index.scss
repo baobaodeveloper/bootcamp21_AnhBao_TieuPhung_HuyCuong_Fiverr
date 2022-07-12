@@ -8,9 +8,13 @@
     padding: 0;
     box-sizing: border-box;
   }
+
   html {
     scroll-behavior: smooth;
   }
+=======
+
+
   body {
     font-family: 'Poppins', sans-serif;
     width: 100%;
@@ -213,20 +217,26 @@
   }
 }
 
-#collapse > .ant-collapse {
+#collapse>.ant-collapse {
   background-color: white;
 
   & > .ant-collapse-item > .ant-collapse-header {
+
+  &>.ant-collapse-item>.ant-collapse-header {
     font-size: 20px;
     font-weight: 600;
   }
 
+
   & > .ant-collapse-item > .ant-collapse-content {
+
+  &>.ant-collapse-item>.ant-collapse-content {
+
     font-size: 18px;
     font-weight: 400;
   }
 
-  & > .ant-collapse-item.ant-collapse-item-active {
+  &>.ant-collapse-item.ant-collapse-item-active {
     .anticon {
       transform: translateY(-50%) rotate(-0deg);
     }
@@ -237,3 +247,5 @@
     transform: translateY(-50%) rotate(-90deg);
   }
 }
+
+
