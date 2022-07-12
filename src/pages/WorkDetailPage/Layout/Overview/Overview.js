@@ -5,20 +5,22 @@ import SliderReviews from './SliderReviews';
 
 export const Overview = () => {
   return (
-    <div className='w-full'>
-      <h1 className='text-3xl font-bold'>
+    <div id='overview' className='w-full'>
+      <h1 className='lg:text-3xl text-2xl font-bold'>
         I will convert sketch, psd, xd to html responsive bootstrap 4
       </h1>
-      <div className='py-8 flex justify-between items-center border-b-2'>
-        <img
-          className='w-[40px] h-[40px] rounded-full object-cover'
-          src='https://images.unsplash.com/photo-1649859398021-afbfe80e83b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-          alt=''
-        />
-        <span className='text-lg font-medium'>innovatorytheme</span>
-        <span className='text-lg font-normal'>Level 2 Seller</span>
-        <span className='inline-block w-[3px] h-[15px] bg-[#b9babc]'></span>
-        <span className='flex items-center gap-x-2 text-xl '>
+      <div className='py-8 flex justify-between flex-wrap items-center border-b-2'>
+        <div className='flex items-center sm:mb-0 mb-2 gap-x-2'>
+          <img
+            className='w-[40px] h-[40px] rounded-full object-cover'
+            src='https://images.unsplash.com/photo-1649859398021-afbfe80e83b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+            alt=''
+          />
+          <span className='text-lg font-medium'>innovatorytheme</span>
+          <span className='text-lg font-normal'>Level 2 Seller</span>
+        </div>
+
+        <span className='flex items-center gap-x-2 text-xl'>
           <Rate
             className='leading-none'
             allowClear

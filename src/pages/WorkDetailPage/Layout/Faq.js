@@ -4,7 +4,7 @@ const { Panel } = Collapse;
 
 export const Faq = () => {
   return (
-    <div>
+    <div id='faq'>
       <h3 className='text-2xl font-semibold p-3'>FAQ</h3>
       <div id='collapse' className=''>
         <Collapse expandIconPosition={'end'} bordered={false}>

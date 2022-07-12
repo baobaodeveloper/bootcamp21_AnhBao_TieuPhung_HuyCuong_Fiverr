@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 
 export const OverviewPricing = () => {
   return (
-    <div className='xl:fixed bg-white z-10'>
+    <div className='xl:sticky xl:h-[600px] xl:min-h-[600px] xl:top-[100px] bg-white z-10'>
       <div
         id='pricing'
         className='border  border-slate-400 rounded-sm overflow-hidden w-full xl:w-[480px] '

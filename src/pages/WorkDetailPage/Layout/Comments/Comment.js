@@ -4,7 +4,7 @@ import { CommentStar } from './CommentStar';
 
 export const Comment = () => {
   return (
-    <div>
+    <div id='reviews'>
       <CommentStar />
       <CommentContent />
     </div>

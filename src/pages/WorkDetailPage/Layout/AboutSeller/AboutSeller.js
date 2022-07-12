@@ -4,7 +4,7 @@ import { AboutSellerHeader } from './AboutSellerHeader';
 
 export const AboutSeller = () => {
   return (
-    <div>
+    <div id='about_seller'>
       <AboutSellerHeader />
       <AboutSellerContent />
     </div>
