@@ -1,30 +1,29 @@
 import React from 'react'
 import { Form, Input, message } from 'antd';
 import { BaseService } from '../../../services/baseService';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import "./FormLogin.module.scss";
 
 
 export default function FormLogin() {
-  let history = useNavigate();
+  let navigate = useNavigate();
+  let userLogin = new BaseService();
 
   const onFinish = (values) => {
     console.log('Success:', values);
-    let userLogin = new BaseService();
-    console.log("userLogin", userLogin);
     userLogin
       .post("api/auth/signin", values)
       .then((res) => {
         console.log(res);
-        message.success(res.message);
+        message.success(res.data.message);
 
         // push len redux
 
         // set local
 
         setTimeout(() => {
-          history.push("/");
+          navigate("/")
           //return();
         }, 2000)
       })
@@ -79,7 +78,9 @@ export default function FormLogin() {
         <Form.Item>
           <div className='flex justify-between'>
             <button className='rounded-lg px-10 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Nhập</button>
-            <button className='rounded-lg px-9 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Ký --&gt;</button>
+            <NavLink to="/register">
+              <button className='rounded-lg px-9 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Ký --&gt;</button>
+            </NavLink>
           </div>
         </Form.Item>
       </Form>
