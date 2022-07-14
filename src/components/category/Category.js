@@ -161,7 +161,7 @@ export default function Category() {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 800,
+    speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
   };
