@@ -1,47 +1,34 @@
 import { Input, Tooltip } from 'antd';
 import React, { useState } from 'react';
+import { MdModeEditOutline } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import { Select } from 'antd';
-import { notificationAlert } from '../../../../../utils/notifycation';
-const { Option } = Select;
+import { notificationAlert } from '../../../../utils/notifycation';
 
-export const Skill = () => {
-  const [skill, setSkill] = useState('');
+export const Certification = () => {
+  const [certification, setCertification] = useState('');
 
-  const [skillLevel, setSkillLevel] = useState('');
-
-  const [listSkill, setListSkill] = useState([]);
+  const [listCertificate, setListCertificate] = useState([]);
   const [showEdit, setShowEdit] = useState(true);
 
   const handleUpdateSkill = () => {
-    const checkIndexSkillExist = listSkill.findIndex(
-      (item) => item.skill === skill
+    const checkIndexCertificationExist = listCertificate.findIndex(
+      (item) => item === certification
     );
 
-    if (checkIndexSkillExist === -1) {
-      const skillObject = { skill, skillLevel };
-      setListSkill([...listSkill, skillObject]);
-      notificationAlert('success', 'Add Skill Success');
-    } else if (
-      checkIndexSkillExist !== -1 &&
-      listSkill[checkIndexSkillExist].skillLevel !== skillLevel
-    ) {
-      listSkill.splice(checkIndexSkillExist, 1);
-      const skillObject = { skill, skillLevel };
-      setListSkill([...listSkill, skillObject]);
-      notificationAlert('success', 'Add Skill Success');
+    if (checkIndexCertificationExist === -1) {
+      setListCertificate([...listCertificate, certification]);
+      notificationAlert('success', 'Add Certification Success');
     } else {
-      setListSkill([...listSkill]);
+      setListCertificate([...listCertificate]);
       notificationAlert(
         'warning',
-        'Add Skill Fail',
-        'Skill has been exist'
+        'Add Certification Fail',
+        'Certification has been exist'
       );
     }
     setShowEdit(true);
 
-    setSkill('');
-    setSkillLevel('');
+    setCertification('');
   };
   return (
     <div className='mb-10 pb-10 border-b border-[#dadbdd] text-lg'>
@@ -51,12 +38,13 @@ export const Skill = () => {
           placement='topLeft'
           title={
             <p className='text-md font-semibold'>
-              Let your buyers know about your skill
+              Listing your honnors and awards can help you stand out
+              from other seller
             </p>
           }
         >
           <div className='flex justify-between items-center text-lg'>
-            <span className='font-bold'>Skill</span>
+            <span className='font-bold'>Certification</span>
             {showEdit && (
               <span
                 onClick={() => setShowEdit(false)}
@@ -73,26 +61,10 @@ export const Skill = () => {
         <div className=' mt-3 w-full flex flex-col  p-4 pb-0  bg-[#f4f4f4] border border-[#dadbdd] rounded-sm '>
           <div className='cursor-pointer mb-4'>
             <Input
-              onChange={(e) => setSkill(e.target.value)}
-              placeholder='Add skill (e.g Voice Talent)'
+              onChange={(e) => setCertification(e.target.value)}
+              placeholder='Your certificate'
               size='large'
             />
-          </div>
-
-          <div className='cursor-pointer border-b border-[#dadbdd] pb-4'>
-            <Select
-              size='large'
-              onChange={(value) => setSkillLevel(value)}
-              style={{
-                width: '100%',
-              }}
-              placeholder='Experience Level'
-              optionFilterProp='children'
-            >
-              <Option value='Beginner'>Beginner</Option>
-              <Option value='Intermediate'>Intermediate</Option>
-              <Option value='Expect'>Expect</Option>
-            </Select>
           </div>
 
           <div className='flex-1 flex items-center justify-between text-lg font-semibold py-4'>
@@ -104,7 +76,7 @@ export const Skill = () => {
             >
               Cancel
             </button>
-            {skill && skillLevel ? (
+            {certification ? (
               <button
                 onClick={handleUpdateSkill}
                 className='py-2 hover:bg-green-400 transition-all border-[#dadbdd] px-8 border bg-green-500 text-white rounded-sm'
@@ -121,24 +93,20 @@ export const Skill = () => {
       )}
 
       <div className='flex flex-col gap-y-2 mt-4'>
-        {console.log(listSkill)}
-        {listSkill.length > 0 &&
-          listSkill.map((item, i) => {
+        {listCertificate.length > 0 &&
+          listCertificate.map((item, i) => {
             return (
               <div
                 key={i}
                 className='flex items-center gap-x-3  justify-start'
               >
-                <span className='border group px-4 py-2 rounded-[30px] overflow-hidden relative hover:bg-slate-300 cursor-pointer transition-all duration-300'>
-                  <span className='font-semibold'>{item.skill}</span>-
-                  <span className='text-slate-400'>
-                    {item.skillLevel}
-                  </span>
-                  <div className='absolute left-0 px-2 group-hover:translate-x-0 top-0 bottom-0 bg-white w-[50%] h-full rounded-[30px] flex items-center justify-end -translate-x-full transition-all duration-300'>
+                <span className='group px-4 py-2 rounded-[30px]  flex items-center gap-x-4 cursor-pointer'>
+                  <span className='font-semibold'>{item}</span>
+                  <div className='group-hover:opacity-100 group-hover:flex items-center opacity-0  gap-x-1 transition-all duration-300 hidden'>
                     <RiDeleteBin6Line
                       onClick={() => {
-                        listSkill.splice(i, 1);
-                        setListSkill([...listSkill]);
+                        listCertificate.splice(i, 1);
+                        setListCertificate([...listCertificate]);
                         notificationAlert(
                           'warning',
                           'Delete Skill Success'

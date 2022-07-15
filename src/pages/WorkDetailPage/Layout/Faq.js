@@ -9,7 +9,7 @@ export const Faq = () => {
       <div id='collapse' className=''>
         <Collapse expandIconPosition={'end'} bordered={false}>
           <Panel header='What do I need to get started?' key='1'>
-            <p>
+            <p className='text-lg'>
               You will need the following to get started: Brand name,
               Tagline (optional), Website (optional), Business
               description, Preferred logo style (optional), Color
@@ -21,7 +21,7 @@ export const Faq = () => {
             header='Can I purchase basic package first and upgrade later?'
             key='2'
           >
-            <p>
+            <p className='text-lg'>
               Yes you can purchase either basic or standard package
               and upgrade later. You can also purchase any of my gig
               extras later.
@@ -31,7 +31,7 @@ export const Faq = () => {
             header='Why do I need vector or source file?'
             key='3'
           >
-            <p>
+            <p className='text-lg'>
               The most important reason to have a source or vector
               file is so you have the ability to edit and manipulate
               your own logo. It provides a level of ownership to your
@@ -39,7 +39,7 @@ export const Faq = () => {
             </p>
           </Panel>
           <Panel header='What does social media kit include?' key='4'>
-            <p>
+            <p className='text-lg'>
               Profile picture and banner/cover design for your social
               medias e.g. Facebook, Twitter, etc.
             </p>
@@ -48,14 +48,14 @@ export const Faq = () => {
             header='What does stationery design include?'
             key='5'
           >
-            <p>
+            <p className='text-lg'>
               Generally, it will include two-sided of business card,
               letterhead & envelope design. Feel free to message me
               first if you need any other designs.
             </p>
           </Panel>
           <Panel header='What services do you offer?' key='6'>
-            <p>
+            <p className='text-lg'>
               Logo, business card, stationery, icon (favicon/app
               icon), social media kit, banner, brochure, flyer,
               poster, packaging, landing page/website design, etc.

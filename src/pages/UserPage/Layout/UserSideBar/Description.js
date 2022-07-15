@@ -1,6 +1,6 @@
 import { Tooltip } from 'antd';
 import React, { useState } from 'react';
-import { notificationAlert } from '../../../../../utils/notifycation';
+import { notificationAlert } from '../../../../utils/notifycation';
 
 export const Description = () => {
   const [description, setDescription] = useState('');
