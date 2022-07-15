@@ -35,8 +35,6 @@
     color: #62646a;
   }
 
-  .swiper-button-prev {
-  }
   .swiper-button-prev,
   .swiper-button-next {
     width: 48px;
@@ -184,5 +182,24 @@
   .ant-tabs-tab-btn {
     font-size: 24px;
     font-weight: 600;
+  }
+}
+
+#faq {
+  .ant-collapse-header-text {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .ant-collapse-expand-icon {
+    .anticon {
+      font-size: 20px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  .ant-collapse-item.ant-collapse-item-active {
+    .anticon {
+      transform: rotate(-0deg);
+    }
   }
 }

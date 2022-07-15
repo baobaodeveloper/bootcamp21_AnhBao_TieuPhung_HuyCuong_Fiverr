@@ -2,7 +2,7 @@ import { Tooltip } from 'antd';
 import React, { useState } from 'react';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Select } from 'antd';
-import { notificationAlert } from '../../../../../utils/notifycation';
+import { notificationAlert } from '../../../../utils/notifycation';
 
 const { Option } = Select;
 

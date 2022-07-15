@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { IoIosPin } from 'react-icons/io';
 import { BsCameraFill } from 'react-icons/bs';
+import { EditProfile } from './EditProfile';
 
-export const InforBasic = () => {
+export const AvatarUser = () => {
   // const [imageUpload, setImageUpload] = useState(null);
   // const uploadImage = async () => {
   //   if (imageUpload === null) return;
@@ -28,7 +29,7 @@ export const InforBasic = () => {
   //   }
   // };
   return (
-    <div className='flex flex-col w-[400px] p-[30px] bg-white border rounded-sm border-[#dadbdd]'>
+    <div className='flex flex-col w-full p-[30px] bg-white border rounded-sm border-[#dadbdd]'>
       <div>
         <div className='w-[150px] h-[150px] group relative mx-auto rounded-full bg-[#e4e5e7] flex overflow-hidden justify-center items-center'>
           <span className='text-6xl text-white font-semibold'>
@@ -58,9 +59,9 @@ export const InforBasic = () => {
         <h3 className='text-2xl font-semibold text-center mt-2 mb-3'>
           baohuynh560
         </h3>
-        <button className='w-full py-2 border border-slate-700 rounded-lg text-xl font-semibold hover:text-white hover:bg-slate-600 transition-all'>
-          Edit Profile
-        </button>
+        <div className='flex justify-center'>
+          <EditProfile />
+        </div>
       </div>
 
       <div className='mt-8 pt-8 border-t border-[#dadbdd]'>
