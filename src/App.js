@@ -46,7 +46,14 @@ function App() {
             </HomeTemplate>
           }
         />
-        <Route path='/user' element={<UserPage />} />
+        <Route
+          path='/user'
+          element={
+            <HomeTemplate position=''>
+              <UserPage />
+            </HomeTemplate>
+          }
+        />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<LoginPage />} />
       </Routes>
