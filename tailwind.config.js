@@ -13,6 +13,9 @@ module.exports = {
         "arrow-size": "16px 64px",
         "selling-size": "80px",
       },
+      backgroundColor: {
+        "modal": "rgba(0,0,0,.65)",
+      },
     },
   },
   plugins: [],

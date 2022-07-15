@@ -1,4 +1,5 @@
 // Import Swiper React components
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Form, Input } from "antd";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -15,6 +16,9 @@ import { EffectFade, Autoplay } from "swiper";
 const { Search } = Input;
 
 export default function Hero() {
+
+  const [searchValue, setSearchValue] = useState("");
+
   return (
     <div className="hero-wrapper">
       <Swiper
@@ -91,7 +95,8 @@ export default function Hero() {
                 size="large"
                 type="search"
                 placeholder='Try "building mobile app"'
-                value=""
+                value={searchValue}
+                onChange={e => setSearchValue(e.target.value)}
               ></Search>
             </Form>
           </div>
