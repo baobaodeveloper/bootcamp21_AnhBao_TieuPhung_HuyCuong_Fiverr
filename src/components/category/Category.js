@@ -201,10 +201,10 @@ export default function Category() {
     ],
   };
   return (
-    <div className="max-width-container">
-      <div className="category-carousel">
+    <div className='category-carousel-wrapper'>
+      <div className='category-carousel'>
         <h2>Popular professional services</h2>
-        <div className="slider-package">
+        <div className='slider-package'>
           <Slider {...settings}>{listImg}</Slider>
         </div>
       </div>
