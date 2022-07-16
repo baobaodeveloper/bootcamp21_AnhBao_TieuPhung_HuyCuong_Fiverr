@@ -7,7 +7,17 @@ export class BaseService {
       url: `${DOMAIN}/${url}`,
       method: 'GET',
       headers: {
-        token: `Bearer ${localStorage.getItem(TOKEN)}`,
+        token: `${localStorage.getItem(TOKEN)}`,
+        tokenByClass: TOKEN_CYBER,
+      },
+    });
+  };
+  getById = (url, id) => {
+    return axios({
+      url: `${DOMAIN}/${url}/${id}`,
+      method: 'GET',
+      headers: {
+        token: `${localStorage.getItem(TOKEN)}`,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -29,7 +39,7 @@ export class BaseService {
       method: 'PUT',
       data: model,
       headers: {
-        token: `Bearer ${localStorage.getItem(TOKEN)}`,
+        token: `${localStorage.getItem(TOKEN)}`,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -39,7 +49,7 @@ export class BaseService {
       url: `${DOMAIN}/${url}`,
       method: 'DELETE',
       headers: {
-        token: `Bearer ${localStorage.getItem(TOKEN)}`,
+        token: `${localStorage.getItem(TOKEN)}`,
         tokenByClass: TOKEN_CYBER,
       },
     });
