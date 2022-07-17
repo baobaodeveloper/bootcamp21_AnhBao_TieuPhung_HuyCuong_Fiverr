@@ -16,7 +16,7 @@ const Modal = ({ setIsOpen, data }) => {
                   className='orca-video'
                   autoPlay
                   controls
-                  poster
+                  poster="true"
                   preload='metadata'
                   crossOrigin='anonymous'
                 >

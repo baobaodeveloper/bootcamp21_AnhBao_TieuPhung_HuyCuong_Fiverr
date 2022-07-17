@@ -104,7 +104,7 @@ export default function Testimonial() {
           <Slider {...settings}>{listItem}</Slider>
         </div>
       </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} data={url.toString()} />}
+      {isOpen && <Modal setIsOpen={setIsOpen} data={url} />}
     </>
   );
 }
