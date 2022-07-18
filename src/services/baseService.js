@@ -28,7 +28,7 @@ export class BaseService {
       method: 'POST',
       data: model,
       headers: {
-        // token: `${localStorage.getItem(TOKEN)}`,
+        token: `${localStorage.getItem(TOKEN)}`,
         tokenByClass: TOKEN_CYBER,
       },
     });

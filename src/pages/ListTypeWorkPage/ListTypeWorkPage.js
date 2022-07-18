@@ -6,6 +6,7 @@ import './ListTypeWorkPage.scss';
 
 const { Meta } = Card;
 
+
 export const ListTypeWorkPage = () => {
   return (
     <div className='list-type-work-page'>
