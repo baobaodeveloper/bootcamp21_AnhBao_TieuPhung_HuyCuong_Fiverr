@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useParams } from 'react';
+import React, { useEffect, useState, useParams, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { RiEarthLine } from 'react-icons/ri';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Drawer } from 'antd';
 import ButtonGreen from '../../../../components/button/ButtonGreen';
 import { HeaderTypeWork } from './HeaderTypeWork';
+import { localStorageService } from '../../../../services/localStorageService';
 
 export const HeaderTemplate = ({ position }) => {
   const [visible, setVisible] = useState(false);
@@ -23,6 +24,15 @@ export const HeaderTemplate = ({ position }) => {
       setHeader(false);
     }
   });
+
+  // handle case chưa login thì không thể vào homepage && đăng nhập rồi nhấn F5 thì homepage vẫn render bình thường
+  let { user } = localStorageService.getUserLocal() || true;
+  
+  let handleLogout = useCallback(() => {
+    localStorageService.removeUserLocal();
+    window.location.href = "/login";
+  }, [])
+
   return (
     <>
       <Drawer
@@ -99,11 +109,10 @@ export const HeaderTemplate = ({ position }) => {
       </Drawer>
       <header
         id='header-template'
-        className={`${
-          header
-            ? `text-white bg-transparent ${position} z-10  w-screen top-0`
-            : `text-gray-800 bg-white ${position} z-10  w-screen top-0`
-        } `}
+        className={`${header
+          ? `text-white bg-transparent ${position} z-10  w-screen top-0`
+          : `text-gray-800 bg-white ${position} z-10  w-screen top-0`
+          } `}
       >
         <div className='container flex justify-between items-center h-16 mx-auto py-12'>
           <div className='flex items-center'>
@@ -206,29 +215,48 @@ export const HeaderTemplate = ({ position }) => {
               </NavLink>
             </li>
           </ul>
-          <div className='items-center flex-shrink-0  text-xl'>
-            <NavLink
-              to='/login'
-              className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
-            >
-              Sign in
-            </NavLink>
-            <NavLink
-              to='/register'
-              className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
-            >
-              Join
-            </NavLink>
-          </div>
+          {
+            user ?
+              (<div className='items-center flex-shrink-0  text-xl'>
+                <NavLink
+                  to='/login'
+                  className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
+                >
+                  {user.name}
+                </NavLink>
+                <NavLink
+                  to='/register'
+                  className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
+                >
+                  <button onClick={handleLogout}>Log out</button>
+                </NavLink>
+              </div>) :
+              (<div className='items-center flex-shrink-0  text-xl'>
+                <NavLink
+                  to='/login'
+                  className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
+                >
+                  Sign in
+                </NavLink>
+                <NavLink
+                  to='/register'
+                  className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
+                >
+                  Join
+                </NavLink>
+              </div>)
+          }
         </div>
-        {!header && (
-          <div className='border-t border-b px-4'>
-            <div className='container mx-auto text-lg font-semibold'>
-              <HeaderTypeWork />
+        {
+          !header && (
+            <div className='border-t border-b px-4'>
+              <div className='container mx-auto text-lg font-semibold'>
+                <HeaderTypeWork />
+              </div>
             </div>
-          </div>
-        )}
-      </header>
+          )
+        }
+      </header >
     </>
   );
 };

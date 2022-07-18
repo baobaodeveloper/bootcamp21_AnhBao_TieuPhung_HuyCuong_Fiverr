@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { BaseService } from '../../../services/baseService';
 
 import "./FormRegister.scss"
+import { localStorageService } from '../../../services/localStorageService';
 
 export default function FormRegister() {
   let navigate = useNavigate();
@@ -21,10 +22,11 @@ export default function FormRegister() {
       .then((res) => {
         console.log(res);
         message.success("Đăng ký thành công");
+        
+        localStorageService.removeUserLocal();
 
         setTimeout(() => {
           navigate("/login")
-          //return();
         }, 2000)
       })
       .catch((err) => {
@@ -54,7 +56,7 @@ export default function FormRegister() {
       >
         <Form.Item
           label="Tài khoản"
-          name="name"
+          name="hoTen"
           hasFeedback
           rules={[
             {
@@ -121,7 +123,7 @@ export default function FormRegister() {
         </Form.Item>
         <Form.Item
           label="Họ tên"
-          name="hoTen"
+          name="name"
           rules={[
             {
               required: true,
@@ -149,10 +151,10 @@ export default function FormRegister() {
               required: true,
               message: 'Email không được rỗng!',
             },
-            // {
-            //   type: 'email',
-            //   message: 'Email không hợp lệ',
-            // }
+            {
+              type: 'email',
+              message: 'Email không hợp lệ',
+            }
           ]}
         >
           <Input />
