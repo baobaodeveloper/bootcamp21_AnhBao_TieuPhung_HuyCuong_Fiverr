@@ -2,12 +2,16 @@ import React from 'react'
 import { Form, Input, message } from 'antd';
 import { BaseService } from '../../../services/baseService';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { localStorageService } from '../../../services/localStorageService';
+
+import { useDispatch } from 'react-redux';
+import { setUserInfor } from '../../../redux/userSlice';
 
 import "./FormLogin.module.scss";
 
-
 export default function FormLogin() {
   let navigate = useNavigate();
+  let dispatch = useDispatch()
   let userLogin = new BaseService();
 
   const onFinish = (values) => {
@@ -19,12 +23,13 @@ export default function FormLogin() {
         message.success(res.data.message);
 
         // push len redux
+        console.log("dispatch");
+        dispatch(setUserInfor(res.data.user));
 
-        // set local
+        localStorageService.setUserLocal(res.data);
 
         setTimeout(() => {
           navigate("/")
-          //return();
         }, 2000)
       })
       .catch((err) => {
@@ -52,13 +57,18 @@ export default function FormLogin() {
         autoComplete="off"
       >
         <Form.Item
-          label="Tài khoản"
+          label="Email"
           name="email"
+          hasFeedback
           rules={[
             {
               required: true,
-              message: 'Tài khoản không được rỗng!',
+              message: 'Email không được rỗng!',
             },
+            {
+              type: 'email',
+              message: 'Email không hợp lệ',
+            }
           ]}
         >
           <Input />
