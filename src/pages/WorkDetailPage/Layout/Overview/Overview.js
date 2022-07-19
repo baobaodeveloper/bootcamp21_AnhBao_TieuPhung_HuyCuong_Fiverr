@@ -1,22 +1,37 @@
 import { Rate } from 'antd';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import SliderImgDetailWork from './SliderImgDetailWork';
 import SliderReviews from './SliderReviews';
 
 export const Overview = () => {
+  const { comment } = useSelector((state) => state.workDetailReducer);
+  const { workDetail } = useSelector(
+    (state) => state.workDetailReducer
+  );
+
   return (
     <div id='overview' className='w-full'>
       <h1 className='lg:text-3xl text-2xl font-bold'>
-        I will convert sketch, psd, xd to html responsive bootstrap 4
+        {`${
+          workDetail.name && workDetail.name[0].toUpperCase()
+        }${workDetail?.name?.slice(1)}`}
       </h1>
       <div className='py-8 flex justify-between flex-wrap items-center border-b-2'>
         <div className='flex items-center sm:mb-0 mb-2 gap-x-2'>
-          <img
+          <div className='w-[40px] h-[40px]  font-semibold rounded-full text-white text-3xl bg-gray-500 '>
+            <span className='h-full text-center inline-block w-full'>
+              {workDetail?.name?.slice(0, 1)}
+            </span>
+          </div>
+          {/* <img
             className='w-[40px] h-[40px] rounded-full object-cover'
-            src='https://images.unsplash.com/photo-1649859398021-afbfe80e83b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+            src={workDetail?.image}
             alt=''
-          />
-          <span className='text-lg font-medium'>innovatorytheme</span>
+          /> */}
+          <span className='text-lg font-medium'>
+            {workDetail?.name?.slice(0, 8)}
+          </span>
           <span className='text-lg font-normal'>Level 2 Seller</span>
         </div>
 
@@ -25,13 +40,19 @@ export const Overview = () => {
             className='leading-none'
             allowClear
             allowHalf
-            defaultValue={5}
+            value={
+              Math.floor(workDetail?.rating | 0) > 5
+                ? 5
+                : +Math.floor(workDetail?.rating)
+            }
           />
           <span className='leading-none font-bold text-[#FADB14]'>
-            5
+            {Math.floor(workDetail?.rating | 0) > '5.0'
+              ? 5
+              : Math.floor(workDetail?.rating | 0) + '.0'}
           </span>
           <span className='leading-none font-normal text-lg'>
-            2 Orders in Queue
+            {workDetail.usersBooking ? 1 : ''} Orders in Queue
           </span>
         </span>
       </div>
@@ -40,12 +61,16 @@ export const Overview = () => {
       </div>
 
       <div className='flex justify-between items-center pt-10 pb-5'>
-        <h1 className='text-2xl font-semibold'>
-          What people loved about this seller
-        </h1>
-        <span className='text-lg text-green-500 hover:underline cursor-pointer'>
-          See all reviews
-        </span>
+        {comment.length > 0 && (
+          <>
+            <h1 className='text-2xl font-semibold'>
+              What people loved about this seller
+            </h1>
+            <span className='text-lg text-green-500 hover:underline cursor-pointer'>
+              See all reviews
+            </span>
+          </>
+        )}
       </div>
       <div>
         <SliderReviews />

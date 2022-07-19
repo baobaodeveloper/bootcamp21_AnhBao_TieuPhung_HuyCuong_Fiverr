@@ -3,11 +3,16 @@ import { BiRevision } from 'react-icons/bi';
 import { BsChevronDown } from 'react-icons/bs';
 import { FiClock } from 'react-icons/fi';
 import { GoCheck } from 'react-icons/go';
+import { useSelector } from 'react-redux';
 
 const onChange = (key) => {};
 const { TabPane } = Tabs;
 
 export const OverviewPricing = () => {
+  const { workDetail } = useSelector(
+    (state) => state.workDetailReducer
+  );
+  console.log(workDetail);
   return (
     <div className='xl:sticky xl:h-[600px] xl:min-h-[600px] xl:top-[100px] bg-white z-10'>
       <div
@@ -22,7 +27,7 @@ export const OverviewPricing = () => {
                   Silver Package 😊
                 </span>
                 <span className='text-[26px] font-semibold'>
-                  US$10
+                  US${workDetail?.price}
                 </span>
               </div>
 
@@ -89,7 +94,7 @@ export const OverviewPricing = () => {
               </ul>
 
               <button className='bg-green-500 text-white mt-4 font-semibold text-xl h-[50px] w-full rounded-lg cursor-pointer hover:bg-green-700 transition-all duration-200'>
-                Continue(US$250)
+                Continue(US${workDetail?.price})
               </button>
             </div>
           </TabPane>
@@ -101,7 +106,7 @@ export const OverviewPricing = () => {
                   Gold Package 😍
                 </span>
                 <span className='text-[26px] font-semibold'>
-                  US$105
+                  US${workDetail?.price * 2}
                 </span>
               </div>
 
@@ -168,7 +173,7 @@ export const OverviewPricing = () => {
               </ul>
 
               <button className='bg-green-500 text-white mt-4 font-semibold text-xl h-[50px] w-full rounded-lg cursor-pointer hover:bg-green-700 transition-all duration-200'>
-                Continue(US$250)
+                Continue(US${workDetail?.price * 2})
               </button>
             </div>
           </TabPane>
@@ -180,7 +185,7 @@ export const OverviewPricing = () => {
                   VIP Package 😎
                 </span>
                 <span className='text-[26px] font-semibold'>
-                  US$250
+                  US${workDetail?.price * 3}
                 </span>
               </div>
 
@@ -247,7 +252,7 @@ export const OverviewPricing = () => {
               </ul>
 
               <button className='bg-green-500 text-white mt-4 font-semibold text-xl h-[50px] w-full rounded-lg cursor-pointer hover:bg-green-700 transition-all duration-200'>
-                Continue(US$250)
+                Continue(US${workDetail?.price * 3})
               </button>
             </div>
           </TabPane>
