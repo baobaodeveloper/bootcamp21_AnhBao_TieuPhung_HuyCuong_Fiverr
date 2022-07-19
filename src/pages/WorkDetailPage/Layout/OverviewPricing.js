@@ -3,12 +3,13 @@ import { BiRevision } from 'react-icons/bi';
 import { BsChevronDown } from 'react-icons/bs';
 import { FiClock } from 'react-icons/fi';
 import { GoCheck } from 'react-icons/go';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const onChange = (key) => {};
 const { TabPane } = Tabs;
 
 export const OverviewPricing = () => {
+  const dispatch = useDispatch();
   const { workDetail } = useSelector(
     (state) => state.workDetailReducer
   );
