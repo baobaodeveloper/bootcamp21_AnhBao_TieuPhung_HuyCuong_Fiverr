@@ -1,15 +1,25 @@
-import React from 'react';
 import { Tabs } from 'antd';
-import { InforDetail } from './Layout/UserSideBar/InforDetail';
-import { UserSelling } from './Layout/UserSelling/UserSelling';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { GET_INFOR_USER } from '../../constants/globalVariable';
 import { UserBuying } from './Layout/UserBuying/UserBuying';
+import { UserSelling } from './Layout/UserSelling/UserSelling';
+import { InforDetail } from './Layout/UserSideBar/InforDetail';
 
 const { TabPane } = Tabs;
 
 export const UserPage = () => {
-  const onChange = (key) => {
-    console.log(key);
-  };
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.userSlice.user.user._id);
+
+  const onChange = (key) => {};
+
+  useEffect(() => {
+    dispatch({
+      type: GET_INFOR_USER,
+      payload: id,
+    });
+  }, [dispatch, id]);
   return (
     <div className='bg-[#f7f7f7]'>
       <div className='container mx-auto py-10 xl:py-20 px-5 gap-x-5 xl:gap-x-20 lg:flex hidden justify-between items-start'>

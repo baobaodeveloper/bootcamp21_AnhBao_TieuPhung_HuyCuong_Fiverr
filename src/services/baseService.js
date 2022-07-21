@@ -7,7 +7,7 @@ export class BaseService {
       url: `${DOMAIN}/${url}`,
       method: 'GET',
       headers: {
-        token: `${localStorage.getItem(TOKEN)}`,
+        token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -17,7 +17,7 @@ export class BaseService {
       url: `${DOMAIN}/${url}/${id}`,
       method: 'GET',
       headers: {
-        token: `${localStorage.getItem(TOKEN)}`,
+        token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -28,7 +28,19 @@ export class BaseService {
       method: 'POST',
       data: model,
       headers: {
-        token: `${localStorage.getItem(TOKEN)}`,
+        token: TOKEN,
+        tokenByClass: TOKEN_CYBER,
+      },
+    });
+  };
+  postAvatar = (url, model) => {
+    return axios({
+      url: `${DOMAIN}/${url}`,
+      method: 'POST',
+      data: model,
+      headers: {
+        // 'Content-Type': 'multipart/form-data',
+        token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -39,7 +51,17 @@ export class BaseService {
       method: 'PUT',
       data: model,
       headers: {
-        token: `${localStorage.getItem(TOKEN)}`,
+        token: TOKEN,
+        tokenByClass: TOKEN_CYBER,
+      },
+    });
+  };
+  patch = (url, id) => {
+    return axios({
+      url: `${DOMAIN}/${url}/${id}`,
+      method: 'PATCH',
+      headers: {
+        token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
     });
@@ -49,7 +71,7 @@ export class BaseService {
       url: `${DOMAIN}/${url}`,
       method: 'DELETE',
       headers: {
-        token: `${localStorage.getItem(TOKEN)}`,
+        token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
     });

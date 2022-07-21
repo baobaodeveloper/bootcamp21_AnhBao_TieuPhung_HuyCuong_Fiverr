@@ -2,13 +2,12 @@ import { Dropdown, Menu, Space } from 'antd';
 import { AiFillStar } from 'react-icons/ai';
 import { FaHeart } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { PopupCard } from '../../../../components/popup/PopupCard';
 import { IoMdAdd } from 'react-icons/io';
+import { NavLink } from 'react-router-dom';
+import { PopupCard } from '../../../../components/popup/PopupCard';
 import SliderImage from './SliderImage';
-import { NavLink, useNavigate } from 'react-router-dom';
 
 export const CardWork = ({ work }) => {
-  const navigate = useNavigate();
   const menu = (
     <Menu
       items={[
