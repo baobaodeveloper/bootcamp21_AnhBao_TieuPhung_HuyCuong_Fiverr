@@ -1,21 +1,46 @@
-import React from "react";
+import { type } from "@testing-library/user-event/dist/type";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { BaseService } from "../../services/baseService";
 
 import "./marketplace.scss";
 
+let typeWorkService = new BaseService();
+
 export default function Marketplace() {
+  const [typeWork, setTypeWork] = useState([]);
+  console.log(typeWork);
+  useEffect(() => {
+    typeWorkService
+      .get("api/type-jobs")
+      .then((res) => {
+        console.log("typeWork", res.data);
+        setTypeWork(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  let typeWorkID = typeWork.map((item) => {
+  
+    return item._id;
+  })
+
+  console.log("typeWorkID", typeWorkID);
   return (
     <div className="marketplace">
       <h2>Explore the marketplace</h2>
       <ul>
         <li>
-          <a href="/categories/graphics-design?source=hplo_cat_sec&amp;pos=1">
+          <NavLink to={`/list_type/${typeWorkID[0]}`}>
             <img
               src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/graphics-design.d32a2f8.svg"
               alt="Graphics &amp; Design"
               loading="lazy"
             />
             Graphics &amp; Design
-          </a>
+          </NavLink>
         </li>
         <li>
           <a href="/categories/online-marketing?source=hplo_cat_sec&amp;pos=2">
