@@ -1,52 +1,58 @@
-import { Dropdown, Menu, message, Space } from 'antd';
-
+import { Dropdown, Menu, Space } from 'antd';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-const menu = (
-  <Menu
-    items={[
-      {
-        label: '1st menu item',
-        key: '1',
-      },
-      {
-        label: '2nd menu item',
-        key: '2',
-      },
-      {
-        label: '3rd menu item',
-        key: '3',
-      },
-    ]}
-  />
-);
+import { listWorkPageActions } from '../../../../pages/ListWorkPage/listWorkPageSlice';
 
 export const HeaderTypeWork = () => {
   const [slider, setSlider] = useState(9);
   const [group, setGroup] = useState(1);
+  const dispatch = useDispatch();
+  const typeJobs = useSelector(
+    (state) => state.headerReducer.typeJob
+  );
 
   useEffect(() => {
-    window.addEventListener('resize', (e) => {
-      if (e.currentTarget.innerWidth > 1300) {
+    function handleResize(e) {
+      const resize = e.currentTarget.innerWidth;
+      if (resize > 1300) {
         setSlider(9);
         setGroup(9);
       }
-      if (e.currentTarget.innerWidth < 1300) {
+      if (resize < 1300) {
         setSlider(7);
         setGroup(7);
       }
-      if (e.currentTarget.innerWidth < 1200) {
+      if (resize < 1200) {
         setSlider(5);
         setGroup(5);
       }
-      if (e.currentTarget.innerWidth < 768) {
+      if (resize < 768) {
         setSlider(4);
         setGroup(3);
       }
+    }
+
+    let setTime;
+    let isThrottling = false;
+    const throttle = (callback, wait, e) => {
+      if (isThrottling) return;
+      isThrottling = true;
+      setTime = setTimeout(() => {
+        callback(e);
+        isThrottling = false;
+      }, wait);
+    };
+
+    window.addEventListener('resize', (e) => {
+      throttle(handleResize, 600, e);
     });
+    return () => {
+      window.removeEventListener('resize', throttle);
+      clearTimeout(setTime);
+    };
   });
   return (
     <div className='slider-type_work'>
@@ -57,96 +63,42 @@ export const HeaderTypeWork = () => {
         spaceBetween={10}
         slidesPerGroup={group}
       >
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Graphics & Design</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Digital Marketing</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Writing & Translation</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Video & Animation</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Music & Audio</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Programming & Tech</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Business</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Lifestyle</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Dropdown overlay={menu}>
-            <span
-              className='cursor-pointer'
-              onClick={(e) => e.preventDefault()}
-            >
-              <Space>Trending</Space>
-            </span>
-          </Dropdown>
-        </SwiperSlide>
+        {typeJobs.length > 0 &&
+          typeJobs.map((typeJob) => {
+            const menu = (
+              <Menu
+                items={typeJob.subTypeJobs.map((item) => ({
+                  key: item.key,
+                  label: (
+                    <div
+                      // onClick={() =>
+                      //   dispatch(
+                      //     listWorkPageActions.getListWorkPage(
+                      //       item.key
+                      //     )
+                      //   )
+                      // }
+                      className='text-lg sm:text-md py-1'
+                    >
+                      {item.label}
+                    </div>
+                  ),
+                }))}
+              />
+            );
+            return (
+              <SwiperSlide key={typeJob.id}>
+                <Dropdown overlay={menu}>
+                  <span
+                    className='cursor-pointer'
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    <Space>{typeJob.name}</Space>
+                  </span>
+                </Dropdown>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </div>
   );

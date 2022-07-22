@@ -2,11 +2,12 @@ import { Dropdown, Menu, Space } from 'antd';
 import { AiFillStar } from 'react-icons/ai';
 import { FaHeart } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { PopupCard } from '../../../../components/popup/PopupCard';
 import { IoMdAdd } from 'react-icons/io';
+import { NavLink } from 'react-router-dom';
+import { PopupCard } from '../../../../components/popup/PopupCard';
 import SliderImage from './SliderImage';
 
-export const CardWork = () => {
+export const CardWork = ({ work }) => {
   const menu = (
     <Menu
       items={[
@@ -32,28 +33,38 @@ export const CardWork = () => {
     />
   );
   return (
-    <div id='card-recommand' className=' w-full '>
+    <NavLink
+      to={`/list_work/${work?._id}`}
+      // onClick={() => navigate(`/list_work/${work._id}`)}
+      id='card-recommand'
+      className=' w-full cursor-pointer'
+    >
       <div className=' rounded-md overflow-hidden border bg-white w-full'>
         <div className='h-[310px]  w-full md:block hidden'>
-          <SliderImage />
+          <SliderImage work={work} />
         </div>
 
         <div className='md:hidden flex gap-x-3 py-5 px-8'>
           <img
             className='w-[142px] h-[85px] object-cover border rounded-lg'
-            src='https://images.unsplash.com/photo-1644982653424-1bfed7f972a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1089&q=80'
+            src={work?.image}
             alt=''
           />
           <div className=' flex flex-col gap-y-1'>
-            <p className='hover:text-green-400 transition-all cursor-pointer text-[#222325] text-[18px] font-normal'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-              .Delectus
+            <p className='hover:text-green-400 transition-all cursor-pointer text-[#222325] text-xl font-normal'>
+              {work?.name}
             </p>
             <div className='flex  items-center gap-x-1'>
               <AiFillStar className='text-xl text-[#ffbe5b]' />
               <span className='text-lg font-semibold '>
-                <span className='text-[#ffbe5b]'>5.0</span>
-                <span className='text-[#b5b6ba]'>(276)</span>
+                <span className='text-[#ffbe5b]'>
+                  {Math.floor(work?.rating | 0) > '5.0'
+                    ? 5
+                    : Math.floor(work?.rating | 0) + '.0'}
+                </span>
+                <span className='text-[#b5b6ba]'>
+                  ({Math.ceil(work?.rating)})
+                </span>
               </span>
             </div>
           </div>
@@ -64,12 +75,12 @@ export const CardWork = () => {
             <div className='flex items-center gap-x-4'>
               <img
                 className='w-8 h-8 rounded-full object-cover'
-                src='https://images.unsplash.com/photo-1656712193135-ef15d7ea27d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
-                alt=''
+                src={work?.image}
+                alt='img'
               />
               <div className='text-md flex flex-col'>
                 <span className='text-[#222325] text-[18px] font-semibold hover:underline cursor-pointer'>
-                  innovatorytheme
+                  {work?.name.slice(0, 10)}
                 </span>
                 <span className='text-[#74767e] '>
                   Level 2 Seller
@@ -83,18 +94,25 @@ export const CardWork = () => {
               <span className='text-md font-semibold'>
                 STARTING AT
               </span>
-              <span className='text-2xl font-semibold'>US$10</span>
+              <span className='text-2xl font-semibold'>
+                US${work?.price}
+              </span>
             </div>
           </div>
           <p className='my-4 md:block hidden hover:text-green-400 transition-all cursor-pointer text-[#222325] text-[18px] font-normal'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            .Delectus
+            {work?.name.slice(0, 30)}...
           </p>
           <div className='md:flex hidden  items-center gap-x-1'>
             <AiFillStar className='text-xl text-[#ffbe5b]' />
             <span className='text-lg font-semibold '>
-              <span className='text-[#ffbe5b]'>5.0</span>
-              <span className='text-[#b5b6ba]'>(276)</span>
+              <span className='text-[#ffbe5b]'>
+                {Math.floor(work?.rating | 0) > '5.0'
+                  ? 5
+                  : Math.floor(work?.rating | 0) + '.0'}
+              </span>
+              <span className='text-[#b5b6ba]'>
+                ({Math.ceil(work?.rating)})
+              </span>
             </span>
           </div>
         </div>
@@ -126,10 +144,12 @@ export const CardWork = () => {
           </div>
           <div className=' flex items-center gap-x-2'>
             <span className='text-md font-semibold'>STARTING AT</span>
-            <span className='text-2xl font-semibold'>US$10</span>
+            <span className='text-2xl font-semibold'>
+              US${work?.price}
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 };

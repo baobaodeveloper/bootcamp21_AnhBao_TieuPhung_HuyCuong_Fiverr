@@ -1,14 +1,14 @@
-import { Input, Select, Tooltip } from 'antd';
-import React, { useState } from 'react';
+import { Input, Tooltip } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
+import { UPDATE_INFOR_USER } from '../../../../constants/globalVariable';
 import { notificationAlert } from '../../../../utils/notifycation';
-const { Option } = Select;
 
 export const Skill = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userPageReducer);
   const [skill, setSkill] = useState('');
-
-  const [skillLevel, setSkillLevel] = useState('');
-
   const [listSkill, setListSkill] = useState([]);
   const [showEdit, setShowEdit] = useState(true);
 
@@ -18,16 +18,7 @@ export const Skill = () => {
     );
 
     if (checkIndexSkillExist === -1) {
-      const skillObject = { skill, skillLevel };
-      setListSkill([...listSkill, skillObject]);
-      notificationAlert('success', 'Add Skill Success');
-    } else if (
-      checkIndexSkillExist !== -1 &&
-      listSkill[checkIndexSkillExist].skillLevel !== skillLevel
-    ) {
-      listSkill.splice(checkIndexSkillExist, 1);
-      const skillObject = { skill, skillLevel };
-      setListSkill([...listSkill, skillObject]);
+      setListSkill([...listSkill, skill]);
       notificationAlert('success', 'Add Skill Success');
     } else {
       setListSkill([...listSkill]);
@@ -40,8 +31,24 @@ export const Skill = () => {
     setShowEdit(true);
 
     setSkill('');
-    setSkillLevel('');
   };
+
+  useEffect(() => {
+    if (user.skill) {
+      setListSkill(user.skill);
+    }
+  }, [user]);
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: UPDATE_INFOR_USER,
+  //     payload: {
+  //       id: user._id,
+  //       updateUser: updateUser,
+  //     },
+  //   });
+  // }, [updateUser]);
+
   return (
     <div className='mb-10 pb-10 border-b border-[#dadbdd] text-lg'>
       <div>
@@ -78,22 +85,6 @@ export const Skill = () => {
             />
           </div>
 
-          <div className='cursor-pointer border-b border-[#dadbdd] pb-4'>
-            <Select
-              size='large'
-              onChange={(value) => setSkillLevel(value)}
-              style={{
-                width: '100%',
-              }}
-              placeholder='Experience Level'
-              optionFilterProp='children'
-            >
-              <Option value='Beginner'>Beginner</Option>
-              <Option value='Intermediate'>Intermediate</Option>
-              <Option value='Expect'>Expect</Option>
-            </Select>
-          </div>
-
           <div className='flex-1 flex items-center justify-between text-lg font-semibold py-4'>
             <button
               onClick={() => {
@@ -103,7 +94,7 @@ export const Skill = () => {
             >
               Cancel
             </button>
-            {skill && skillLevel ? (
+            {skill ? (
               <button
                 onClick={handleUpdateSkill}
                 className='py-2 hover:bg-green-400 transition-all border-[#dadbdd] px-8 border bg-green-500 text-white rounded-sm'
@@ -120,8 +111,7 @@ export const Skill = () => {
       )}
 
       <div className='flex flex-col gap-y-2 mt-4'>
-        {console.log(listSkill)}
-        {listSkill.length > 0 &&
+        {listSkill?.length > 0 &&
           listSkill.map((item, i) => {
             return (
               <div
@@ -129,19 +119,26 @@ export const Skill = () => {
                 className='flex items-center gap-x-3  justify-start'
               >
                 <span className='border group px-4 py-2 rounded-[30px] overflow-hidden relative hover:bg-slate-300 cursor-pointer transition-all duration-300'>
-                  <span className='font-semibold'>{item.skill}</span>-
-                  <span className='text-slate-400'>
-                    {item.skillLevel}
-                  </span>
+                  <span className='font-semibold'>{item}</span>
                   <div className='absolute left-0 px-2 group-hover:translate-x-0 top-0 bottom-0 bg-white w-[60%] h-full rounded-[30px] flex items-center justify-end   -translate-x-full transition-all duration-300'>
                     <RiDeleteBin6Line
                       onClick={() => {
-                        listSkill.splice(i, 1);
-                        setListSkill([...listSkill]);
+                        setListSkill([...listSkill.slice(i + 1)]);
                         notificationAlert(
                           'warning',
                           'Delete Skill Success'
                         );
+
+                        dispatch({
+                          type: UPDATE_INFOR_USER,
+                          payload: {
+                            id: user._id,
+                            userUpdate: {
+                              ...user,
+                              skill: [...listSkill.slice(i + 1)],
+                            },
+                          },
+                        });
                       }}
                       className='cursor-pointer'
                     />

@@ -1,8 +1,12 @@
 import { Rate } from 'antd';
 import React from 'react';
 import { BsDot } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 
 export const AboutSellerHeader = () => {
+  const { workDetail } = useSelector(
+    (state) => state.workDetailReducer
+  );
   return (
     <div>
       <h3 className='text-2xl font-semibold '>About The Seller</h3>
@@ -15,7 +19,9 @@ export const AboutSellerHeader = () => {
 
         <div className='flex flex-col gap-y-2 items-start'>
           <div className='flex  gap-x-4 '>
-            <span className='font-semibold'>ei8htz</span>
+            <span className='font-semibold'>
+              {workDetail?.name?.slice(0, 8)}
+            </span>
             <div className='flex border items-center border-green-500 px-2 rounded-[20px] text-green-500'>
               <BsDot />
               <span className='leading-none'>Online</span>

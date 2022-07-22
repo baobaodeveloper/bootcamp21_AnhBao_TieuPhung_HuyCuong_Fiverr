@@ -63,7 +63,7 @@ export const CommentStar = () => {
           <div className=' flex gap-x-2 items-center'>
             <Rate
               allowHalf
-              defaultValue={2.5}
+              defaultValue={4.9}
               className='leading-none'
             />
             <span className='text-[18px] leading-none font-semibold text-[#d7b618]'>

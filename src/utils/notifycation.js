@@ -10,6 +10,6 @@ export const notificationAlert = (
     message: title,
     description: desc,
     placement,
-    duration: 2,
+    duration: 3,
   });
 };

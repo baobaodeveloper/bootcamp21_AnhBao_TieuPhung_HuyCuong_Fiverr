@@ -47,6 +47,7 @@ function App() {
           }
         />
         <Route
+          exact
           path='/user'
           element={
             <HomeTemplate position=''>
