@@ -1,7 +1,13 @@
 import { Tabs } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GET_INFOR_USER } from '../../constants/globalVariable';
+import {
+  GET_INFOR_USER,
+  GET_LIST_WORK,
+  SUCCESS,
+} from '../../constants/globalVariable';
+import { listWorkApi } from '../../services/listWork';
+import { listWorkPageActions } from '../ListWorkPage/listWorkPageSlice';
 import { UserBuying } from './Layout/UserBuying/UserBuying';
 import { UserSelling } from './Layout/UserSelling/UserSelling';
 import { InforDetail } from './Layout/UserSideBar/InforDetail';
@@ -20,6 +26,10 @@ export const UserPage = () => {
       payload: id,
     });
   }, [dispatch, id]);
+
+  useEffect(() => {
+    dispatch({ type: GET_LIST_WORK });
+  }, [dispatch]);
   return (
     <div className='bg-[#f7f7f7]'>
       <div className='container mx-auto py-10 xl:py-20 px-5 gap-x-5 xl:gap-x-20 lg:flex hidden justify-between items-start'>

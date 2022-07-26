@@ -1,12 +1,14 @@
 import { Input, Tooltip } from 'antd';
 import React, { useState } from 'react';
-import { MdModeEditOutline } from 'react-icons/md';
+import { useEffect } from 'react';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 import { notificationAlert } from '../../../../utils/notifycation';
 
 export const Certification = () => {
-  const [certification, setCertification] = useState('');
+  const { user } = useSelector((state) => state.userPageReducer);
 
+  const [certification, setCertification] = useState('');
   const [listCertificate, setListCertificate] = useState([]);
   const [showEdit, setShowEdit] = useState(true);
 
@@ -30,6 +32,11 @@ export const Certification = () => {
 
     setCertification('');
   };
+  useEffect(() => {
+    if (user.certification) {
+      setListCertificate(user.certification);
+    }
+  }, [user]);
   return (
     <div className='mb-10 pb-10 border-b border-[#dadbdd] text-lg'>
       <div>
@@ -105,8 +112,9 @@ export const Certification = () => {
                   <div className='group-hover:opacity-100 group-hover:flex items-center opacity-0  gap-x-1 transition-all duration-300 hidden'>
                     <RiDeleteBin6Line
                       onClick={() => {
-                        listCertificate.splice(i, 1);
-                        setListCertificate([...listCertificate]);
+                        setListCertificate([
+                          ...listCertificate.slice(i + 1),
+                        ]);
                         notificationAlert(
                           'warning',
                           'Delete Skill Success'
