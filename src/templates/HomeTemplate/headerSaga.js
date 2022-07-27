@@ -16,7 +16,6 @@ function* getJobFromSubType(action) {
     );
     if (res.status === SUCCESS) {
       const { data } = res;
-      console.log(data);
       yield put(actionLoading.turnOffLoading());
       yield put(listWorkPageActions.getListWorkPage(data));
     }

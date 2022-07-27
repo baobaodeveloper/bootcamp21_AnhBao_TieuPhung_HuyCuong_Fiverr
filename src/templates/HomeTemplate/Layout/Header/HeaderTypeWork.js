@@ -81,7 +81,7 @@ export const HeaderTypeWork = () => {
                           type: GET_SUBTYPE_JOB,
                           payload: item.key,
                         });
-                        navigate('/list_work');
+                        navigate(`/list_work/${item.label}`);
                       }}
                       className='text-lg sm:text-md py-1'
                     >

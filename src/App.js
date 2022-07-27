@@ -34,29 +34,33 @@ function App() {
             }
           />
           <Route
-            path='/list_work/:idTypeJob/:idSubTypeJob'
+            path='/list_type/:idTypeJob/:idSubTypeJob'
             element={
               <HomeTemplate position=''>
                 <ListWorkPage />
               </HomeTemplate>
             }
           />
+
           <Route
-            path='/list_work'
+            exact
+            path='/list_work/:typeJob'
             element={
               <HomeTemplate position=''>
                 <ListWorkPage />
               </HomeTemplate>
             }
           />
+
           <Route
-            path='/list_work/:id'
+            path='/list_work/:typeJob/:id'
             element={
               <HomeTemplate position=''>
                 <WorkDetailPage />
               </HomeTemplate>
             }
           />
+
           <Route
             exact
             path='/user'

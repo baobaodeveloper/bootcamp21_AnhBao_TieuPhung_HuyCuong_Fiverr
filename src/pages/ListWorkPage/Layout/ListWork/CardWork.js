@@ -6,8 +6,11 @@ import { IoMdAdd } from 'react-icons/io';
 import { NavLink } from 'react-router-dom';
 import { PopupCard } from '../../../../components/popup/PopupCard';
 import SliderImage from './SliderImage';
+import { useParams, useNavigate } from 'react-router-dom';
 
 export const CardWork = ({ work }) => {
+  const navigate = useNavigate();
+  const { typeJob } = useParams();
   const menu = (
     <Menu
       items={[
@@ -34,8 +37,7 @@ export const CardWork = ({ work }) => {
   );
   return (
     <NavLink
-      to={`/list_work/${work?._id}`}
-      // onClick={() => navigate(`/list_work/${work._id}`)}
+      to={`/list_work/${typeJob}/${work?._id}`}
       id='card-recommand'
       className=' w-full cursor-pointer'
     >

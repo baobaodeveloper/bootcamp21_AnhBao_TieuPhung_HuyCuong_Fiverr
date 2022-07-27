@@ -49,7 +49,7 @@ export const ListTypeWorkPage = () => {
 
   const handleClickSubTypeJob = (idTypeJob, idSubTypeJob) => {
     console.log('click subtypejob ne');
-    navigate(`/list_work/${idTypeJob}/${idSubTypeJob}`);
+    navigate(`/list_type/${idTypeJob}/${idSubTypeJob}`);
   };
 
   return (

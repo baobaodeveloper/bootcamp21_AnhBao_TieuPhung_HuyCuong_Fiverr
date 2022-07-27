@@ -9,7 +9,6 @@ export const ListWork = () => {
   const { listWork } = useSelector(
     (state) => state.listWorkPageReducer
   );
-  console.log(listWork);
 
   return (
     <div>

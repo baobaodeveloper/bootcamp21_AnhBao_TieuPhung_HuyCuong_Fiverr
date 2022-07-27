@@ -15,6 +15,7 @@ import { listWorkApi } from '../../services/listWorkService';
 
 export const WorkDetailPage = () => {
   const { id } = useParams();
+  console.log(id);
   const dispatch = useDispatch();
 
   useEffect(() => {
