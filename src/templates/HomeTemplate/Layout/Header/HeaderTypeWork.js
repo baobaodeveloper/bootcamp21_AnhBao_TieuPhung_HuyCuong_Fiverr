@@ -56,7 +56,9 @@ export const HeaderTypeWork = () => {
       clearTimeout(setTime);
     };
   });
-
+  const handleListTypeWorkPage = (id) => {
+    navigate(`/list_type/${id}`);
+  };
   return (
     <div className='slider-type_work'>
       <Swiper
@@ -94,7 +96,9 @@ export const HeaderTypeWork = () => {
                 <Dropdown overlay={menu}>
                   <span
                     className='cursor-pointer'
-                    onClick={(e) => e.preventDefault()}
+                    onClick={() => {
+                      handleListTypeWorkPage(typeJob.id);
+                    }}
                   >
                     <Space>{typeJob.name}</Space>
                   </span>

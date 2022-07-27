@@ -97,7 +97,7 @@ export const HeaderTemplate = ({ position }) => {
             to='/'
             className='text-gray-700 text-xl font-semibold'
           >
-            US$ USD
+            $ USD
           </NavLink>
           <NavLink
             to='/'

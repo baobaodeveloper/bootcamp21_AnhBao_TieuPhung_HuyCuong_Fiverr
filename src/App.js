@@ -26,10 +26,18 @@ function App() {
             }
           />
           <Route
-            path='/list_type'
+            path='/list_type/:id'
             element={
               <HomeTemplate position=''>
                 <ListTypeWorkPage />
+              </HomeTemplate>
+            }
+          />
+          <Route
+            path='/list_work/:idTypeJob/:idSubTypeJob'
+            element={
+              <HomeTemplate position=''>
+                <ListWorkPage />
               </HomeTemplate>
             }
           />

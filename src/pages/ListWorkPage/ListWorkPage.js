@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { GET_LIST_WORK } from '../../constants/globalVariable';
 import { ListWork } from './Layout/ListWork/ListWork';
 import { LeftSort } from './Layout/Sort/LeftSort';
 import { RightSort } from './Layout/Sort/RightSort';
 import { SortByRelevance } from './Layout/Sort/SortByRelevance';
+import { listWorkPageActions } from './listWorkPageSlice';
+import { useParams } from 'react-router-dom';
 
 export const ListWorkPage = () => {
   const dispatch = useDispatch();
+  const { idTypeJob, idSubTypeJob } = useParams();
+  console.log({ idTypeJob, idSubTypeJob });
+
 
   useEffect(() => {
     dispatch({ type: GET_LIST_WORK });
