@@ -5,6 +5,7 @@ import {
   followGetInforUser,
   followUpdateUser,
 } from '../pages/UserPage/userSaga';
+import { followGetJobFromSubType } from '../templates/HomeTemplate/headerSaga';
 
 export function* rootSaga() {
   yield all([
@@ -12,5 +13,6 @@ export function* rootSaga() {
     call(followUpdateUser),
     call(followCreateJob),
     call(followGetListWork),
+    call(followGetJobFromSubType),
   ]);
 }

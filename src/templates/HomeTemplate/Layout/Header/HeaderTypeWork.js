@@ -1,12 +1,14 @@
 import { Dropdown, Menu, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { listWorkPageActions } from '../../../../pages/ListWorkPage/listWorkPageSlice';
+import { GET_SUBTYPE_JOB } from '../../../../constants/globalVariable';
 
 export const HeaderTypeWork = () => {
+  const navigate = useNavigate();
   const [slider, setSlider] = useState(9);
   const [group, setGroup] = useState(1);
   const dispatch = useDispatch();
@@ -54,6 +56,7 @@ export const HeaderTypeWork = () => {
       clearTimeout(setTime);
     };
   });
+
   return (
     <div className='slider-type_work'>
       <Swiper
@@ -71,13 +74,13 @@ export const HeaderTypeWork = () => {
                   key: item.key,
                   label: (
                     <div
-                      // onClick={() =>
-                      //   dispatch(
-                      //     listWorkPageActions.getListWorkPage(
-                      //       item.key
-                      //     )
-                      //   )
-                      // }
+                      onClick={() => {
+                        dispatch({
+                          type: GET_SUBTYPE_JOB,
+                          payload: item.key,
+                        });
+                        navigate('/list_work');
+                      }}
                       className='text-lg sm:text-md py-1'
                     >
                       {item.label}

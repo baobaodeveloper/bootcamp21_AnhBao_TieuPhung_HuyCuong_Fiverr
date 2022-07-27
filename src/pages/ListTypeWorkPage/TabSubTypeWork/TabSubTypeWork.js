@@ -1,14 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 
 export default function TabSubTypeWork() {
-  useEffect(() => {
-      
-  
-    
-  }, [])
-  
+  useEffect(() => {}, []);
 
-  return (
-    <div>TabSubTypeWork</div>
-  )
+  return <div>TabSubTypeWork</div>;
 }

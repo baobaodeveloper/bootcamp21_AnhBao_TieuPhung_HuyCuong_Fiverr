@@ -7,7 +7,14 @@ export const listWorkPageSlice = createSlice({
   },
   reducers: {
     getListWorkPage: (state, action) => {
-      state.listWork = action.payload;
+      const chunkSize = 12;
+      let chunk = [];
+      for (let i = 0; i < action.payload.length; i += chunkSize) {
+        chunk.push(action.payload.slice(i, i + chunkSize));
+      }
+      state.listWork = chunk;
+
+      // state.listWork = action.payload;
     },
   },
 });

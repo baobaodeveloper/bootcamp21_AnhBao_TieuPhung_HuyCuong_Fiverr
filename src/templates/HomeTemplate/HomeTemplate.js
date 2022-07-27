@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { SUCCESS } from '../../constants/globalVariable';
-import { headerApi } from '../../services/headerTypeJob';
+import { headerApi } from '../../services/headerTypeJobService';
+import { HeaderTypeJobAction } from './headerSlice';
 import { FooterTemplate } from './Layout/Footer/FooterTemplate';
-import { HeaderTypeJobAction } from './Layout/Header/headerSlice';
 import { HeaderTemplate } from './Layout/Header/HeaderTemplate';
 
 const HomeTemplate = ({ children, position }) => {

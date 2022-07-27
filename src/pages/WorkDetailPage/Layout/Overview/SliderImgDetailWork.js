@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Controller } from 'swiper';
 import { useSelector } from 'react-redux';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +10,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from 'swiper';
 export default function SliderImgDetailWork() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { workDetail } = useSelector(

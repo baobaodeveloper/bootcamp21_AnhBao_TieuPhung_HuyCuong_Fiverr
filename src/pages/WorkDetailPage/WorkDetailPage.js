@@ -9,9 +9,9 @@ import { Overview } from './Layout/Overview/Overview';
 import { OverviewPricing } from './Layout/OverviewPricing';
 import { Recommandations } from './Layout/Recommandations';
 import { useEffect } from 'react';
-import { listWorkApi } from '../../services/listWork';
 import { SUCCESS } from '../../constants/globalVariable';
 import { workDetailActions } from './workDetailSlice';
+import { listWorkApi } from '../../services/listWorkService';
 
 export const WorkDetailPage = () => {
   const { id } = useParams();

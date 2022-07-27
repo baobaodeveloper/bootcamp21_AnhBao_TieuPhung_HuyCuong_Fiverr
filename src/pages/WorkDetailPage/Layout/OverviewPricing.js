@@ -7,7 +7,7 @@ import { GoCheck } from 'react-icons/go';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SUCCESS } from '../../../constants/globalVariable';
-import { bookingApi } from '../../../services/booking';
+import { bookingApi } from '../../../services/bookingService';
 import { notificationAlert } from '../../../utils/notifycation';
 
 const onChange = (key) => {};

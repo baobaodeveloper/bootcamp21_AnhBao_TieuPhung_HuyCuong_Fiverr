@@ -3,7 +3,7 @@ import {
   GET_LIST_WORK,
   SUCCESS,
 } from '../../constants/globalVariable';
-import { listWorkApi } from '../../services/listWork';
+import { listWorkApi } from '../../services/listWorkService';
 import { listWorkPageActions } from './listWorkPageSlice';
 
 function* getListWork() {
@@ -11,12 +11,7 @@ function* getListWork() {
     const res = yield call(() => listWorkApi.getListWork());
     const { data } = res;
     if (res.status === SUCCESS) {
-      const chunkSize = 12;
-      let chunk = [];
-      for (let i = 0; i < data.length; i += chunkSize) {
-        chunk.push(data.slice(i, i + chunkSize));
-      }
-      yield put(listWorkPageActions.getListWorkPage(chunk));
+      yield put(listWorkPageActions.getListWorkPage(data));
     }
   } catch (error) {
     console.log('Fail fetch data', error);

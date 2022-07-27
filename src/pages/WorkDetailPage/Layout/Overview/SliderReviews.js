@@ -11,10 +11,10 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper';
 import { Rate } from 'antd';
 import { useEffect } from 'react';
-import { listWorkApi } from '../../../../services/listWork';
 import { SUCCESS } from '../../../../constants/globalVariable';
 import { workDetailActions } from '../../workDetailSlice';
 import { useState } from 'react';
+import { listWorkApi } from '../../../../services/listWorkService';
 
 export default function SliderReviews() {
   const [comment, setComment] = useState('');
