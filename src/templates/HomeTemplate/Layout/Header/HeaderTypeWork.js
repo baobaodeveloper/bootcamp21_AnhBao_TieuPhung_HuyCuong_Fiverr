@@ -5,6 +5,7 @@ import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { listWorkPageActions } from '../../../../pages/ListWorkPage/listWorkPageSlice';
+import { useNavigate } from "react-router-dom"
 
 export const HeaderTypeWork = () => {
   const [slider, setSlider] = useState(9);
@@ -13,6 +14,7 @@ export const HeaderTypeWork = () => {
   const typeJobs = useSelector(
     (state) => state.headerReducer.typeJob
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleResize(e) {
@@ -54,6 +56,11 @@ export const HeaderTypeWork = () => {
       clearTimeout(setTime);
     };
   });
+
+  const handleListTypeWorkPage = (id) => {
+    navigate(`/list_type/${id}`)
+  }
+
   return (
     <div className='slider-type_work'>
       <Swiper
@@ -91,7 +98,9 @@ export const HeaderTypeWork = () => {
                 <Dropdown overlay={menu}>
                   <span
                     className='cursor-pointer'
-                    onClick={(e) => e.preventDefault()}
+                    onClick={() => {
+                      handleListTypeWorkPage(typeJob.id);
+                    }}
                   >
                     <Space>{typeJob.name}</Space>
                   </span>

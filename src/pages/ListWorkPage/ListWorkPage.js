@@ -1,30 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { SUCCESS } from '../../constants/globalVariable';
-import { listWorkApi } from '../../services/listWork';
+
+import { GET_LIST_WORK } from '../../constants/globalVariable';
 import { ListWork } from './Layout/ListWork/ListWork';
 import { LeftSort } from './Layout/Sort/LeftSort';
 import { RightSort } from './Layout/Sort/RightSort';
 import { SortByRelevance } from './Layout/Sort/SortByRelevance';
 import { listWorkPageActions } from './listWorkPageSlice';
+import { useParams } from 'react-router-dom';
 
 export const ListWorkPage = () => {
   const dispatch = useDispatch();
+  const { idTypeJob, idSubTypeJob } = useParams();
+  console.log({ idTypeJob, idSubTypeJob });
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await listWorkApi.getListWork();
-        const { data } = res;
-        if (res.status === SUCCESS) {
-          dispatch(listWorkPageActions.getListWorkPage(data));
-        }
-      } catch (error) {
-        console.log('Fail fetch data', error);
-      }
-    };
-    fetchData();
-  }, []);
+    dispatch({ type: GET_LIST_WORK });
+  }, [dispatch]);
   return (
     <div className='container mx-auto pt-10 pb-5 px-5'>
       <h2 className='text-4xl font-semibold'>Results for 'html'</h2>

@@ -31,7 +31,7 @@ function App() {
           }
         />
         <Route
-          path='/list_work'
+          path='/list_work/:idTypeJob/:idSubTypeJob'
           element={
             <HomeTemplate position=''>
               <ListWorkPage />

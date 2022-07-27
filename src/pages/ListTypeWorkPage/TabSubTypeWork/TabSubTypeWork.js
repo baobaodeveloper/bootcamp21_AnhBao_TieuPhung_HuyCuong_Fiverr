@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-export default function TabSubTypeWork() {
-  useEffect(() => {
-      
-  
-    
-  }, [])
-  
-
+export default function TabSubTypeWork(props) {
+  const { typeJob, subTypeJob } = props;
+  console.log("typeJob in tab", typeJob);
+  console.log("subTypeJob in tab", subTypeJob);
   return (
-    <div>TabSubTypeWork</div>
+    <div className='w-full px-6 py-6 pt-0 text-left text-lg'>
+      <ul>
+        <li className='font-bold'>
+          <a href="">{typeJob.name}</a>
+        </li>
+        {
+          subTypeJob.map(item => (<li className='text-gray-500 hover:'><a href={`/list_work/${typeJob.id}/${item._id}`}>{item.name}</a></li>))
+        }
+      </ul>
+    </div>
   )
 }
