@@ -1,5 +1,8 @@
 import { Form, Input, InputNumber, Select, Switch } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { BsImage } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { CREATE_USER_JOB } from '../../../../constants/globalVariable';
 import './index.scss';
 
 /* eslint-disable no-template-curly-in-string */
@@ -17,14 +20,29 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 export const CreateJob = ({ setVisible }) => {
+  const dispatch = useDispatch();
+  const { typeJob } = useSelector((state) => state.headerReducer);
+
   const [imageUpload, setImageUpload] = useState(null);
+  const [listSubJob, setListSubJob] = useState([]);
 
   const onFinish = (values) => {
     console.log(values);
+    dispatch({
+      type: CREATE_USER_JOB,
+      payload: values,
+    });
+  };
+
+  const handleChangeListSubJob = (job) => {
+    const subJob = typeJob.find((item) => item.id === job);
+    setListSubJob(subJob.subTypeJobs);
   };
 
   useEffect(() => {
     if (imageUpload === null) return;
+    document.getElementById('imgJob').src =
+      URL.createObjectURL(imageUpload);
     const fd = new FormData();
     // fd.append('image', imageUpload, imageUpload?.name);
     console.log(fd);
@@ -32,7 +50,19 @@ export const CreateJob = ({ setVisible }) => {
 
   return (
     <div id='create-job'>
-      <Form onFinish={onFinish} validateMessages={validateMessages}>
+      <Form
+        onFinish={onFinish}
+        initialValues={{
+          proServices: false,
+          localSellers: false,
+          onlineSellers: false,
+          deliveryTime: false,
+          type: '',
+          subType: '',
+          image: '',
+        }}
+        validateMessages={validateMessages}
+      >
         <Form.Item
           labelCol={{
             span: 8,
@@ -65,19 +95,19 @@ export const CreateJob = ({ setVisible }) => {
             },
           ]}
         >
-          <InputNumber />
+          <InputNumber min={1} />
         </Form.Item>
         <div className='flex flex-col gap-y-2 px-10'>
           <div className='flex items-center justify-between'>
             <Form.Item
-              valuePropName=''
+              valuePropName='checked'
               name='proServices'
               label='ProServices'
             >
-              <Switch />
+              <Switch checked={true} />
             </Form.Item>
             <Form.Item
-              valuePropName=''
+              valuePropName='checked'
               name='localSellers'
               label='LocalSellers'
             >
@@ -86,14 +116,14 @@ export const CreateJob = ({ setVisible }) => {
           </div>
           <div className='flex items-center justify-between'>
             <Form.Item
-              valuePropName=''
+              valuePropName='checked'
               name='onlineSellers'
               label='OnlineSellers'
             >
               <Switch />
             </Form.Item>
             <Form.Item
-              valuePropName=''
+              valuePropName='checked'
               name='deliveryTime'
               label='DeliveryTime'
             >
@@ -104,6 +134,12 @@ export const CreateJob = ({ setVisible }) => {
         <div className='flex flex-col'>
           <div className='flex-1'>
             <Form.Item
+              name='type'
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
               labelCol={{
                 span: 8,
               }}
@@ -112,20 +148,26 @@ export const CreateJob = ({ setVisible }) => {
               }}
               label='SELECT A CATEGORIES'
             >
-              <Select>
-                <Select.Option value='demo'>Demo</Select.Option>
-                <Select.Option value='demo1'>Demo</Select.Option>
-                <Select.Option value='demo2'>Demo</Select.Option>
-                <Select.Option value='demo3'>Demo</Select.Option>
-                <Select.Option value='demo4'>Demo</Select.Option>
-                <Select.Option value='demo5'>Demo</Select.Option>
-                <Select.Option value='demo6'>Demo</Select.Option>
-                <Select.Option value='demo7'>Demo</Select.Option>
+              <Select onChange={(job) => handleChangeListSubJob(job)}>
+                {typeJob?.length > 0 &&
+                  typeJob.map((job) => {
+                    return (
+                      <Select.Option key={job.id} value={job.id}>
+                        {job.name}
+                      </Select.Option>
+                    );
+                  })}
               </Select>
             </Form.Item>
           </div>
           <div className='flex-1'>
             <Form.Item
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+              name='subType'
               labelCol={{
                 span: 8,
               }}
@@ -135,14 +177,14 @@ export const CreateJob = ({ setVisible }) => {
               label='SELECT A SUBCATEGORIES'
             >
               <Select>
-                <Select.Option value='demo'>Demo</Select.Option>
-                <Select.Option value='demo1'>Demo</Select.Option>
-                <Select.Option value='demo2'>Demo</Select.Option>
-                <Select.Option value='demo3'>Demo</Select.Option>
-                <Select.Option value='demo4'>Demo</Select.Option>
-                <Select.Option value='demo5'>Demo</Select.Option>
-                <Select.Option value='demo6'>Demo</Select.Option>
-                <Select.Option value='demo7'>Demo</Select.Option>
+                {listSubJob.length > 0 &&
+                  listSubJob.map((job) => {
+                    return (
+                      <Select.Option key={job.key} value={job.key}>
+                        {job.label}
+                      </Select.Option>
+                    );
+                  })}
               </Select>
             </Form.Item>
           </div>
@@ -150,13 +192,26 @@ export const CreateJob = ({ setVisible }) => {
 
         <div>
           <div className='mt-5'>
-            <input
-              type='file'
-              onChange={(e) => {
-                console.log(e.target.files[0]);
-                setImageUpload(e.target.files[0]);
-              }}
-            />
+            <div className='w-[150px] h-[150px] relative bg-slate-500 rounded-lg overflow-hidden'>
+              <div className='absolute w-full h-full top-0 left-0 flex justify-center items-center'>
+                <BsImage className='text-7xl text-white' />
+              </div>
+              <Form.Item name='image'>
+                <input
+                  className='absolute cursor-pointer z-20 w-full h-full top-0 left-0 opacity-0 '
+                  type='file'
+                  onChange={(e) => {
+                    console.log(e.target.files[0]);
+                    setImageUpload(e.target.files[0]);
+                  }}
+                />
+              </Form.Item>
+              <img
+                className='w-full h-full object-cover'
+                id='imgJob'
+                alt=''
+              />
+            </div>
           </div>
         </div>
 

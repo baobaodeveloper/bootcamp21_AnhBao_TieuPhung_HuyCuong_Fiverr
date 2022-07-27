@@ -12,6 +12,9 @@ class UserService extends BaseService {
   updateUser = (id, data) => {
     return this.put(`api/users/${id}`, data);
   };
+  createJob = (data) => {
+    return this.post('api/jobs', data);
+  };
 }
 
 export const userInfor = new UserService();

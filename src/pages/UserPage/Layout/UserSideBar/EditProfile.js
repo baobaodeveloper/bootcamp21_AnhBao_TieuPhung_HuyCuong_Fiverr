@@ -1,10 +1,14 @@
 import { Modal } from 'antd';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
+import moment from 'moment';
 
 export const EditProfile = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { user } = useSelector((state) => state.userPageReducer);
+
   return (
     <div id='modal-profile'>
       <div>
@@ -25,22 +29,36 @@ export const EditProfile = () => {
       >
         <div className='flex items-center justify-between'>
           <div className='flex-1 flex flex-col items-center'>
-            <div className='w-[200px]  overflow-hidden h-[200px] rounded-full bg-slate-300'>
-              <img
-                src='https://images.unsplash.com/photo-1657602801662-892bb4a6316c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-                alt=''
-              />
+            <div className='w-[200px] relative  h-[200px] rounded-full bg-slate-300'>
+              {user?.avatar ? (
+                <img
+                  className='w-full rounded-full h-full object-cover'
+                  src={user?.avatar}
+                  alt=''
+                />
+              ) : (
+                <span className='w-full flex justify-center items-center rounded-full absolute z-10 bg-gray-400 h-full text-white text-3xl'>
+                  {user?.name &&
+                    user.name
+                      .split(' ')
+                      [user.name.split(' ').length - 1].toUpperCase()}
+                </span>
+              )}
             </div>
-            <span className='text-2xl font-semibold'>baobao</span>
+            <span className='text-2xl font-semibold mt-3'>
+              {user?.name}
+            </span>
           </div>
           <div className='flex-1'>
             <Formik
               initialValues={{
-                name: '',
-                email: '',
-                phone: '',
-                birthday: '',
-                gender: 'male',
+                name: user?.name,
+                email: user?.email,
+                phone: user?.phone,
+                birthday: moment(user?.birthday)
+                  .subtract(10, 'days')
+                  .calendar(),
+                gender: user?.name ? 'male' : 'female',
               }}
               validationSchema={Yup.object({
                 name: Yup.string()
@@ -53,7 +71,7 @@ export const EditProfile = () => {
                   .required('Required'),
                 phone: Yup.string()
                   .matches(
-                    /^[0-9\-\+]{11}$/,
+                    /^[0-9\-\+]{10}$/,
                     'Phone have to include number to 0 to 9 and must be equal 11 numbers'
                   )
                   .required('Required'),
@@ -189,12 +207,16 @@ export const EditProfile = () => {
 
                 <div className='self-center mt-3'>
                   <button
+                    onClick={() => setIsModalVisible(false)}
                     type='button'
                     className='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 '
                   >
                     Cancel
                   </button>
                   <button
+                    onClick={() => {
+                      setIsModalVisible(false);
+                    }}
                     type='submit'
                     className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '
                   >

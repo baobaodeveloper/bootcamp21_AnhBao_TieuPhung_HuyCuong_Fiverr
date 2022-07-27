@@ -84,13 +84,7 @@ export const AvatarUser = () => {
           </div>
         </div>
         <h3 className='text-2xl font-semibold text-center mt-2 mb-3'>
-          {user?.name &&
-            user.name
-              .split(' ')
-              [user.name.split(' ').length - 1][0].toUpperCase() +
-              user.name
-                .split(' ')
-                [user.name.split(' ').length - 1].slice(1)}
+          {user?.name}
         </h3>
         <div className='flex justify-center'>
           {updateAvatar ? (
