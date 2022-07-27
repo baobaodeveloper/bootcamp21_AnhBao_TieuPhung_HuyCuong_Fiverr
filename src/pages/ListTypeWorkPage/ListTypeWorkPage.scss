@@ -19,28 +19,20 @@
       height: 100%;
     }
 
-    .list-type-work-page-content-right {
-      margin: 10px;
-      border: 1px solid red;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 50px;
-      padding: 10px;
-    }
-  }
 
-  .list-type-work-page-footer {
-    display: flex;
-    justify-content: space-between;
-    max-width: 80%;
-    margin: 0 auto;
-    // border: 1px solid red;
-    padding-top: 20px;
-
-    .list-type-work-page-footer-item {
-
-    }
   }
 
 
+  // .list-type-work-page-footer {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   max-width: 80%;
+  //   margin: 0 auto;
+  //   // border: 1px solid red;
+  //   padding-top: 20px;
+
+  //   .list-type-work-page-footer-item {
+
+  //   }
+  // }
 }
