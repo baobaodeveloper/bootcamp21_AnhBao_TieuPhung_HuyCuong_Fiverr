@@ -2,7 +2,7 @@
 
 @layer components {
   .hero-wrapper {
-    @apply lg:h-[680px] sm:h-[415px] min-h-[320px] relative bg-green-900;
+    @apply lg:h-[680px] sm:h-[415px]  in-h-[320px] relative bg-green-900;
     & .hero-slide {
       @apply h-full w-full hidden lg:block;
       & .hero-background {
