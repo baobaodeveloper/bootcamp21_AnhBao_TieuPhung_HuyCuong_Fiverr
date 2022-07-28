@@ -4,10 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   GET_INFOR_USER,
   GET_LIST_WORK,
-  SUCCESS,
 } from '../../constants/globalVariable';
-import { listWorkApi } from '../../services/listWork';
-import { listWorkPageActions } from '../ListWorkPage/listWorkPageSlice';
+
 import { UserBuying } from './Layout/UserBuying/UserBuying';
 import { UserSelling } from './Layout/UserSelling/UserSelling';
 import { InforDetail } from './Layout/UserSideBar/InforDetail';

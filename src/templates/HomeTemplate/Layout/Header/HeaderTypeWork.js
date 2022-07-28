@@ -1,20 +1,20 @@
 import { Dropdown, Menu, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { listWorkPageActions } from '../../../../pages/ListWorkPage/listWorkPageSlice';
-import { useNavigate } from "react-router-dom"
+import { GET_SUBTYPE_JOB } from '../../../../constants/globalVariable';
 
 export const HeaderTypeWork = () => {
+  const navigate = useNavigate();
   const [slider, setSlider] = useState(9);
   const [group, setGroup] = useState(1);
   const dispatch = useDispatch();
   const typeJobs = useSelector(
     (state) => state.headerReducer.typeJob
   );
-  const navigate = useNavigate();
 
   useEffect(() => {
     function handleResize(e) {
@@ -57,10 +57,6 @@ export const HeaderTypeWork = () => {
     };
   });
 
-  const handleListTypeWorkPage = (id) => {
-    navigate(`/list_type/${id}`)
-  }
-
   return (
     <div className='slider-type_work'>
       <Swiper
@@ -71,20 +67,20 @@ export const HeaderTypeWork = () => {
         slidesPerGroup={group}
       >
         {typeJobs.length > 0 &&
-          typeJobs.map((typeJob) => {
+          typeJobs.map((typeJob, i) => {
             const menu = (
               <Menu
                 items={typeJob.subTypeJobs.map((item) => ({
                   key: item.key,
                   label: (
                     <div
-                      // onClick={() =>
-                      //   dispatch(
-                      //     listWorkPageActions.getListWorkPage(
-                      //       item.key
-                      //     )
-                      //   )
-                      // }
+                      onClick={() => {
+                        dispatch({
+                          type: GET_SUBTYPE_JOB,
+                          payload: item.key,
+                        });
+                        navigate(`/list_work/${item.label}`);
+                      }}
                       className='text-lg sm:text-md py-1'
                     >
                       {item.label}
@@ -96,14 +92,12 @@ export const HeaderTypeWork = () => {
             return (
               <SwiperSlide key={typeJob.id}>
                 <Dropdown overlay={menu}>
-                  <span
+                  <NavLink
+                    to={`/list_type/${typeJob.name}`}
                     className='cursor-pointer'
-                    onClick={() => {
-                      handleListTypeWorkPage(typeJob.id);
-                    }}
                   >
                     <Space>{typeJob.name}</Space>
-                  </span>
+                  </NavLink>
                 </Dropdown>
               </SwiperSlide>
             );

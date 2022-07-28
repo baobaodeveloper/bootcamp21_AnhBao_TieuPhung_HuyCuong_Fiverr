@@ -3,9 +3,9 @@ import { Pagination } from 'antd';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { SUCCESS } from '../../../../constants/globalVariable';
-import { bookingApi } from '../../../../services/booking';
 import { CardWork } from '../../../ListWorkPage/Layout/ListWork/CardWork';
 import { CardBuying } from './CardBuying';
+import { bookingApi } from '../../../../services/bookingService';
 
 export const UserBuying = () => {
   const [page, setPage] = useState(0);

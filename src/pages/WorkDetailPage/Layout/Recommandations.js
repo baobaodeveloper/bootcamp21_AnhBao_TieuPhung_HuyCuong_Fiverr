@@ -1,17 +1,15 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 import { Navigation } from 'swiper';
 import { CardWork } from '../../ListWorkPage/Layout/ListWork/CardWork';
 import { useEffect } from 'react';
-import { listWorkApi } from '../../../services/listWork';
 import { useState } from 'react';
 import { SUCCESS } from '../../../constants/globalVariable';
 import { useParams } from 'react-router-dom';
+import { listWorkApi } from '../../../services/listWorkService';
 
 export const Recommandations = () => {
   const { id } = useParams();

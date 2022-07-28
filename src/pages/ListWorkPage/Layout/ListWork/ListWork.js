@@ -33,7 +33,7 @@ export const ListWork = () => {
               onChange={(value) => setPage(value - 1)}
               showSizeChanger={false}
               defaultCurrent={1}
-              pageSize={12}
+              pageSize={1}
               total={listWork.length}
             />
           </div>
