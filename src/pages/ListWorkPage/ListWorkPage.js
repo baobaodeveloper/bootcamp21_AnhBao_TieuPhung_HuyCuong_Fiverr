@@ -10,7 +10,6 @@ import { SortByRelevance } from './Layout/Sort/SortByRelevance';
 
 export const ListWorkPage = () => {
   const dispatch = useDispatch();
-  const { idTypeJob, idSubTypeJob } = useParams();
 
   useEffect(() => {
     dispatch({ type: GET_LIST_WORK });

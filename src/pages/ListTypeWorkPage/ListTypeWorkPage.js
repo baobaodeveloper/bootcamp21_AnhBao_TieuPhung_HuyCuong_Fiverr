@@ -1,61 +1,37 @@
 import { Card } from 'antd';
-import { SiBuddy } from 'react-icons/si';
-
 import 'antd/dist/antd.min.css';
-import './ListTypeWorkPage.scss';
-import { useNavigate, useParams } from 'react-router-dom';
-import { BaseService } from '../../services/baseService';
 import { useEffect, useState } from 'react';
+import { SiBuddy } from 'react-icons/si';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { GET_SUBTYPE_JOB } from '../../constants/globalVariable';
+import './ListTypeWorkPage.scss';
 import TabSubTypeWork from './TabSubTypeWork/TabSubTypeWork';
-
+import { useDispatch } from 'react-redux';
 const { Meta } = Card;
 
-var imageAddress =
+const imageAddress =
   'https://mona.software/wp-content/uploads/2021/07/tam-quan-trong-cua-data-analyst-la-gi.jpg';
 
-let typeWorkService = new BaseService();
-
 export const ListTypeWorkPage = () => {
+  const { typeJob } = useSelector((state) => state.headerReducer);
+  const [IndexTypeWork, setIndexTypeWork] = useState(0);
+  const { type } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [typeJob, setTypeJob] = useState([]);
-  let { id } = useParams();
 
   useEffect(() => {
-    typeWorkService
-      .get('api/type-jobs')
-      .then((res) => {
-        // console.log(res.data);
-        let typeJobs = res.data.map((item) => ({
-          subTypeJob: item.subTypeJobs,
-          name: item.name,
-          id: item._id,
-        }));
-
-        const checkIndex = (typeJob) => {
-          return typeJob.id === id;
-        };
-        const indexChecked = typeJobs.findIndex(checkIndex);
-
-        let typeJob = typeJobs[indexChecked];
-
-        setTypeJob(typeJob);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
-
-  let subTypeJob = typeJob.subTypeJob || [];
-
-  const handleClickSubTypeJob = (idTypeJob, idSubTypeJob) => {
-    console.log('click subtypejob ne');
-    navigate(`/list_type/${idTypeJob}/${idSubTypeJob}`);
-  };
-
+    const indexTypeJobParam = typeJob.findIndex(
+      (item) => item.name === type
+    );
+    setIndexTypeWork(indexTypeJobParam);
+  }, [type, typeJob]);
   return (
     <div className='list-type-work-page  my-10'>
       <div className='list-type-work-page-header container mx-auto'>
-        <h1 className='font-bold text-4xl mb-3'>{typeJob.name}</h1>
+        <h1 className='font-bold text-4xl mb-3'>
+          {typeJob[IndexTypeWork]?.name}
+        </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit.
           Quas, nulla eum. Itaque et vel sequi.
@@ -67,30 +43,38 @@ export const ListTypeWorkPage = () => {
       </div>
       <div className='list-type-work-page-body grid grid-cols-4 gap-4 m-10 container mx-auto'>
         <div className=''>
-          <TabSubTypeWork subTypeJob={subTypeJob} typeJob={typeJob} />
+          <TabSubTypeWork
+            IndexTypeWork={IndexTypeWork}
+            setIndexTypeWork={setIndexTypeWork}
+            typeJob={typeJob}
+          />
         </div>
         <div className='col-start-2 col-end-5 grid grid-cols-3 gap-4'>
-          {subTypeJob.map((item) => {
-            return (
-              <Card
-                key={item._id}
-                className='w-full h-full'
-                hoverable
-                onClick={() => {
-                  handleClickSubTypeJob(typeJob.id, item._id);
-                }}
-                cover={
-                  <img
-                    className='w-full h-full object-cover'
-                    alt='example'
-                    src={item.image || imageAddress}
-                  />
-                }
-              >
-                <Meta title={item.name} />
-              </Card>
-            );
-          })}
+          {typeJob[IndexTypeWork]?.subTypeJobImg &&
+            typeJob[IndexTypeWork].subTypeJobImg[0].map((item) => {
+              return (
+                <Card
+                  onClick={() => {
+                    dispatch({
+                      type: GET_SUBTYPE_JOB,
+                      payload: item._id,
+                    });
+                    navigate(`/list_work/${item.name}`);
+                  }}
+                  key={item._id}
+                  className='w-full h-full'
+                  cover={
+                    <img
+                      className='w-full h-full object-cover'
+                      alt='example'
+                      src={item.image || imageAddress}
+                    />
+                  }
+                >
+                  <Meta title={item.name} />
+                </Card>
+              );
+            })}
         </div>
       </div>
       <div className='list-type-work-page-footer flex space-x-20 bg-gray-100 p-10'>

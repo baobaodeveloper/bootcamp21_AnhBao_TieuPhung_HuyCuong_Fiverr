@@ -1,5 +1,6 @@
 import { type } from '@testing-library/user-event/dist/type';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { BaseService } from '../../services/baseService';
 
@@ -22,35 +23,16 @@ const imgSources = [
 let typeWorkService = new BaseService();
 
 export default function Marketplace() {
-  const [typeWork, setTypeWork] = useState([]);
-  const navigate = useNavigate();
-  // const handleListTypeWorkPage = (id) => {
-  //   navigate(`/list_type/${id}`)
-  // }
-
-  useEffect(() => {
-    typeWorkService
-      .get('api/type-jobs')
-      .then((res) => {
-        setTypeWork(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const { typeJob } = useSelector((state) => state.headerReducer);
 
   return (
     <div className='marketplace'>
       <h2>Explore the marketplace</h2>
-      {/* ${typeWorkID[0]} */}
-      {/* to={`/list_type/`} */}
-
       <ul>
-        {typeWork.map((item, index) => {
-          // console.log(index);
+        {typeJob.map((item, index) => {
           return (
             <li key={item._id}>
-              <a href={`/list_type/${item._id}`}>
+              <a href={`/list_type/${item.name}`}>
                 <img
                   src={imgSources[index]}
                   alt='Digital Marketing'

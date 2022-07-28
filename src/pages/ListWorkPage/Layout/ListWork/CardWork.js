@@ -7,6 +7,8 @@ import { NavLink } from 'react-router-dom';
 import { PopupCard } from '../../../../components/popup/PopupCard';
 import SliderImage from './SliderImage';
 import { useParams, useNavigate } from 'react-router-dom';
+const imageAddress =
+  'https://mona.software/wp-content/uploads/2021/07/tam-quan-trong-cua-data-analyst-la-gi.jpg';
 
 export const CardWork = ({ work }) => {
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ export const CardWork = ({ work }) => {
         <div className='md:hidden flex gap-x-3 py-5 px-8'>
           <img
             className='w-[142px] h-[85px] object-cover border rounded-lg'
-            src={work?.image}
+            src={work?.image || imageAddress}
             alt=''
           />
           <div className=' flex flex-col gap-y-1'>
@@ -77,7 +79,7 @@ export const CardWork = ({ work }) => {
             <div className='flex items-center gap-x-4'>
               <img
                 className='w-8 h-8 rounded-full object-cover'
-                src={work?.image}
+                src={work?.image || imageAddress}
                 alt='img'
               />
               <div className='text-md flex flex-col'>

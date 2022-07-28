@@ -1,7 +1,7 @@
 import { Dropdown, Menu, Space } from 'antd';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Navigation } from 'swiper';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -56,9 +56,7 @@ export const HeaderTypeWork = () => {
       clearTimeout(setTime);
     };
   });
-  const handleListTypeWorkPage = (id) => {
-    navigate(`/list_type/${id}`);
-  };
+
   return (
     <div className='slider-type_work'>
       <Swiper
@@ -69,7 +67,7 @@ export const HeaderTypeWork = () => {
         slidesPerGroup={group}
       >
         {typeJobs.length > 0 &&
-          typeJobs.map((typeJob) => {
+          typeJobs.map((typeJob, i) => {
             const menu = (
               <Menu
                 items={typeJob.subTypeJobs.map((item) => ({
@@ -94,14 +92,12 @@ export const HeaderTypeWork = () => {
             return (
               <SwiperSlide key={typeJob.id}>
                 <Dropdown overlay={menu}>
-                  <span
+                  <NavLink
+                    to={`/list_type/${typeJob.name}`}
                     className='cursor-pointer'
-                    onClick={() => {
-                      handleListTypeWorkPage(typeJob.id);
-                    }}
                   >
                     <Space>{typeJob.name}</Space>
-                  </span>
+                  </NavLink>
                 </Dropdown>
               </SwiperSlide>
             );

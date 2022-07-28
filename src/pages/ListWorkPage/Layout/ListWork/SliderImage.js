@@ -9,6 +9,9 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper';
 
+const imageAddress =
+  'https://mona.software/wp-content/uploads/2021/07/tam-quan-trong-cua-data-analyst-la-gi.jpg';
+
 export default function SliderImage({ work }) {
   return (
     <div id='slider-img-card' className='h-full'>
@@ -27,7 +30,7 @@ export default function SliderImage({ work }) {
         <SwiperSlide>
           <img
             className='w-full h-full object-cover'
-            src={work?.image}
+            src={work?.image || imageAddress}
             alt=''
           />
         </SwiperSlide>
