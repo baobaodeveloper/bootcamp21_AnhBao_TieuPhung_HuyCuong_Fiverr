@@ -5,6 +5,7 @@ import bgAnimate from "../../assets/bg-login.json";
 import { localStorageService } from '../../services/localStorageService';
 import { useNavigate } from 'react-router-dom';
 
+import "./LoginPage.scss";
 
 export const LoginPage = () => {
   let navigate = useNavigate();
@@ -13,13 +14,18 @@ export const LoginPage = () => {
       navigate("/");
     }
   }, [])
-  
-  return <div className='container mx-auto my-5 flex justify-between border border-gray-500'>
-    <div className='h-full w-9/12 border-r-2 border-gray-400 flex justify-center items-center'>
-      <Lottie animationData={bgAnimate} loop={50} />
+
+  return (
+    <div className='login'>
+      <div className='lottie-img'>
+        <Lottie animationData={bgAnimate} loop={50} />
+      </div>
+      <div className='login__form'>
+        <FormLogin />
+      </div>
     </div>
-    <FormLogin />
-  </div>;
+  );
 };
+
 
 

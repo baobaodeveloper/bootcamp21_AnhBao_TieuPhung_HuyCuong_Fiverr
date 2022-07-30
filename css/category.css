@@ -1,0 +1,60 @@
+@tailwind components;
+@layer components {
+  .category-carousel-wrapper {
+    @apply m-0 pt-6 px-6 pb-12 sm:m-0 sm:pt-8 sm:px-8 sm:pb-16 w-full;
+  }
+  .category-carousel {
+    @apply mt-0 mx-auto mb-12 sm:mb-20 lg:mb-24 container lg:h-[410px];
+  }
+  .category-carousel h2 {
+    @apply lg:pb-6 pb-5 sm:text-3xl sm:leading-tight text-2xl leading-snug font-bold;
+  }
+  .category-carousel .slider-package {
+    @apply h-[345px];
+  }
+  .category-carousel .slider-package .slick-slider {
+    @apply lg:-mx-[18px] sm:mx-[-9px] mx-[-6px];
+  }
+  .category-carousel .slider-package .slick-slider button {
+    @apply text-[0px];
+  }
+  .category-carousel .slider-package .slick-slider button.slick-prev {
+    @apply lg:left-[-8px] left-[-17px] rounded-[30px] after:content-[''] 
+            after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 
+                after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+  }
+  .category-carousel .slider-package .slick-slider button.slick-next {
+    @apply lg:right-[-8px] rounded-[30px] after:content-[''] 
+            after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 
+                after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+  }
+  .category-carousel .slider-package .slick-slider button.slick-arrow {
+    @apply bg-white absolute z-[4] top-1/2 w-12 h-12 
+            text-center shadow-arrow border-0 leading-none;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .slick-track {
+    @apply min-w-full;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .slick-slide {
+    @apply lg:px-[18px] sm:px-[9px] px-[6px] block;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .subcategory-wrapper {
+    @apply h-[345px] lg:w-[257px];
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .subcategory-wrapper a {
+    @apply relative block;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .subcategory-wrapper a h4 {
+    @apply relative z-[1] text-white p-4 text-2xl font-bold;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .subcategory-wrapper a small {
+    @apply text-sm block font-normal;
+  }
+  .category-carousel .slider-package .slick-slider .slick-list .subcategory-wrapper img {
+    @apply object-cover absolute h-[345px] w-full rounded top-0 
+              hover:opacity-80 transition-opacity duration-300 ease-in-out;
+  }
+}
+/*# sourceMappingURL=category.css.map */

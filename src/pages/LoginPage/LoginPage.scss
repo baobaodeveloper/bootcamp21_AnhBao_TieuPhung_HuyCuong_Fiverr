@@ -1,0 +1,95 @@
+$media_queries : (
+  /* Mobile width < 740px */
+  'mobile': "only screen and (max-width: 46.25em)",
+  /* Tablet width >= 740px & width < 1024px */
+  'tablet': " only screen and (min-width: 46.25em) and (max-width: 64em)"
+);
+
+@mixin for_breakpoint($breakpoints) {
+  $conditions: ();
+
+  @each $breakpoint in $breakpoints {
+    // If the key exists in the map
+    $conditions: append($conditions,
+      #{inspect(map-get($media_queries, $breakpoint))},
+      comma);
+  }
+
+  @media #{$conditions} {
+    @content;
+  }
+}
+
+.login {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+
+  .lottie-img {
+    width: 70%;
+    border-right: 1px solid black;
+
+    &>div {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .login__form {
+    width: 30%;
+    height: 50%;
+    margin: auto 0;
+    // border: 1px blue solid;
+    padding: 20px;
+  }
+
+  @include for_breakpoint(tablet) {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+
+    .lottie-img {
+      width: 100%;
+      border-right: none;
+      // border: 1px solid blue;
+      margin-bottom: 40px;
+
+      &>div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .login__form {
+      width: 100%;
+      // border: 1px solid red;
+      padding: 150px 0 0 0;
+    }
+  }
+
+  @include for_breakpoint(mobile) {
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+
+    .lottie-img {
+      width: 100%;
+      border-right: none;
+      position: relative;
+      top: -5%;
+
+      &>div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .login__form {
+      width: 100%;
+      padding-top: 150px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@tailwind components;
+@layer components {
+  .testimonials-wrapper {
+    @apply container lg:mb-24 sm:mb-20 mx-auto mb-12 lg:h-[315px] px-6 sm:px-8 md:px-8 lg:px-8;
+  }
+  .testimonials-wrapper .slick-slider {
+    @apply lg:h-[315px];
+  }
+  .testimonials-wrapper .slick-slider button {
+    @apply text-[0px];
+  }
+  .testimonials-wrapper .slick-slider button.slick-prev {
+    @apply rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+  }
+  .testimonials-wrapper .slick-slider button.slick-next {
+    @apply rounded-[30px] after:content-[''] after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
+                after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
+  }
+  .testimonials-wrapper .slick-slider button.slick-arrow {
+    @apply top-1/4 bg-white absolute z-[4] md:top-[30%] lg:top-1/2 w-12 h-12 -mt-4 text-center shadow-arrow border-0 leading-none;
+  }
+  .testimonials-wrapper .slick-slider .testimonial {
+    @apply flex items-center lg:flex-row flex-col;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .testimonial-modal {
+    @apply lg:w-[40%] w-full min-h-[250px] flex relative items-center justify-center;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .testimonial-modal .picture-wrapper {
+    @apply relative cursor-pointer;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .testimonial-modal .picture-wrapper picture {
+    @apply lg:flex after:content-[''] after:inline-block after:h-20 
+              after:w-20 after:absolute after:top-[50%] after:bg-selling-size 
+              after:left-[50%] after:bg-no-repeat
+              after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png')] 
+              after:translate-x-[-50%] after:translate-y-[-50%];
+  }
+  .testimonials-wrapper .slick-slider .testimonial .testimonial-modal .picture-wrapper picture img {
+    @apply h-full w-full rounded md:min-h-[400px] lg:min-h-full;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content {
+    @apply lg:w-[60%] lg:max-w-[707px] lg:pr-12 lg:pl-16 pt-6 px-6 pb-0 w-full;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content h5 {
+    @apply font-normal text-[#74767e] pb-4 sm:text-xl leading-snug;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content h5 .testimonial-logo {
+    @apply xl:border-l border-[#c5c6c9] xl:ml-4 h-9 m-0 border-0;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content h5 .testimonial-logo img {
+    @apply xl:inline-block block xl:ml-3 ml-[-6px] h-8 align-middle;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content blockquote {
+    @apply lg:text-3xl text-2xl leading-10 text-[#003912] pb-6 lg:pb-0;
+  }
+  .testimonials-wrapper .slick-slider .testimonial .text-content blockquote i {
+    @apply font-medium;
+  }
+}
+/*# sourceMappingURL=testimonial.css.map */

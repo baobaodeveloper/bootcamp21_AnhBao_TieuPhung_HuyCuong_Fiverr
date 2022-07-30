@@ -7,7 +7,7 @@ import { localStorageService } from '../../../services/localStorageService';
 import { useDispatch } from 'react-redux';
 import { setUserInfor } from '../../../redux/userSlice';
 
-import "./FormLogin.module.scss";
+import "./FormLogin.scss";
 
 export default function FormLogin() {
   let navigate = useNavigate();
@@ -43,7 +43,7 @@ export default function FormLogin() {
   };
 
   return (
-    <div className='form pt-14 px-5'>
+    <div className=''>
       <h1 className='text-4xl mb-5'>Đăng Nhập</h1>
       <Form
         layout='vertical'
@@ -56,43 +56,51 @@ export default function FormLogin() {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          label="Email"
-          name="email"
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: 'Email không được rỗng!',
-            },
-            {
-              type: 'email',
-              message: 'Email không hợp lệ',
-            }
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Mật khẩu"
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Mật khẩu không được rỗng!',
-            },
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item>
-          <div className='flex justify-between'>
-            <button className='rounded-lg px-10 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Nhập</button>
-            <NavLink to="/register">
-              <button className='rounded-lg px-9 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Ký --&gt;</button>
-            </NavLink>
-          </div>
-        </Form.Item>
+        <div>
+          <Form.Item
+            label="Email"
+            name="email"
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: 'Email không được rỗng!',
+              },
+              {
+                type: 'email',
+                message: 'Email không hợp lệ',
+              }
+            ]}
+          >
+            <Input />
+          </Form.Item>
+        </div>
+
+        <div>
+          <Form.Item
+            label="Mật khẩu"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: 'Mật khẩu không được rỗng!',
+              },
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+        </div>
+
+        <div>
+          <Form.Item>
+            <div className='flex justify-center space-x-10'>
+              <button className='rounded-lg px-10 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Nhập</button>
+              <NavLink to="/register">
+                <button className='rounded-lg px-9 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Ký --&gt;</button>
+              </NavLink>
+            </div>
+          </Form.Item>
+        </div>
       </Form>
     </div>
   );

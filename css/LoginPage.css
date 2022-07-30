@@ -1,0 +1,85 @@
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login .lottie-img {
+  width: 70%;
+  border-right: 1px solid black;
+}
+
+.login .lottie-img > div {
+  width: 100%;
+  height: 100%;
+}
+
+.login .login__form {
+  width: 30%;
+  height: 50%;
+  margin: auto 0;
+  padding: 20px;
+}
+
+@media only screen and (min-width: 46.25em) and (max-width: 64em) {
+  .login {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 70%;
+    margin: 0 auto;
+  }
+  .login .lottie-img {
+    width: 100%;
+    border-right: none;
+    margin-bottom: 40px;
+  }
+  .login .lottie-img > div {
+    width: 100%;
+    height: 100%;
+  }
+  .login .login__form {
+    width: 100%;
+    padding: 150px 0 0 0;
+  }
+}
+
+@media only screen and (max-width: 46.25em) {
+  .login {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    position: absolute;
+  }
+  .login .lottie-img {
+    width: 100%;
+    border-right: none;
+    position: relative;
+    top: -5%;
+  }
+  .login .lottie-img > div {
+    width: 100%;
+    height: 100%;
+  }
+  .login .login__form {
+    width: 100%;
+    padding-top: 150px;
+  }
+}
+/*# sourceMappingURL=LoginPage.css.map */
