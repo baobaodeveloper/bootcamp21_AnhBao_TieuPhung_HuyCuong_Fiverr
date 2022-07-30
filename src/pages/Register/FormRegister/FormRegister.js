@@ -41,7 +41,7 @@ export default function FormRegister() {
   };
 
   return (
-    <div className='form py-14 px-5'>
+    <div className=''>
       <h1 className='text-4xl mb-8'>Đăng Ký</h1>
       <Form
         layout='vertical'
@@ -182,7 +182,7 @@ export default function FormRegister() {
           <Input />
         </Form.Item>
         <Form.Item>
-          <div className='flex justify-between'>
+          <div className='flex justify-center space-x-10'>
             <button className='rounded-lg px-12 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Ký</button>
             <NavLink to="/login">
               <button className='rounded-lg px-7 py-4 bg-white-500 border border-black hover:shadow-xl'>Đăng Nhập --&gt;</button>

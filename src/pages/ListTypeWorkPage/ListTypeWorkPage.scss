@@ -1,38 +1,88 @@
+$media_queries : (
+  /* Mobile width < 740px */
+  'mobile': "only screen and (max-width: 46.25em)",
+  /* Tablet width >= 740px & width < 1024px */
+  'tablet': " only screen and (min-width: 46.25em) and (max-width: 64em)"
+);
+
+@mixin for_breakpoint($breakpoints) {
+  $conditions: ();
+
+  @each $breakpoint in $breakpoints {
+    // If the key exists in the map
+    $conditions: append($conditions,
+      #{inspect(map-get($media_queries, $breakpoint))},
+      comma);
+  }
+
+  @media #{$conditions} {
+    @content;
+  }
+}
+
 .list-type-work-page {
   text-align: center;
 
   .list-type-work-page-header {
-
     svg {
       display: inline-block;
     }
   }
 
-  .list-type-work-page-content {
-    display: flex;
-    justify-content: center;
+  .list-type-work-page-body {
+    .tab-sub-type-work {}
 
-
-    .list-type-work-page-content-left {
-      margin: 10px;
-      border: 1px solid red;
-      height: 100%;
+    .card-sub-type-work {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      gap: 10px;
+      grid-column-start: 2;
+      grid-column-end: 5;
     }
 
+    @include for_breakpoint(tablet) {
+      .tab-sub-type-work {
+        display: none;
+      }
 
+      .card-sub-type-work {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-column-start: 1;
+      }
+    }
+
+    @include for_breakpoint(mobile) {
+      .tab-sub-type-work {
+        display: none;
+      }
+
+      .card-sub-type-work {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-column-start: 1;
+      }
+    }
   }
 
+  .list-type-work-page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 10px;
 
-  // .list-type-work-page-footer {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   max-width: 80%;
-  //   margin: 0 auto;
-  //   // border: 1px solid red;
-  //   padding-top: 20px;
+    .list-type-work-page-footer-item {
+      width: 20%;
+      margin: 0 30px;
+    }
 
-  //   .list-type-work-page-footer-item {
-
-  //   }
-  // }
+    @include for_breakpoint(mobile) {
+      .list-type-work-page-footer-item {
+        width: 80%;
+        margin: 10px auto;
+      }
+    }
+  }
 }

@@ -3,11 +3,19 @@ import FormRegister from './FormRegister/FormRegister';
 import Lottie from "lottie-react";
 import bgAnimate from "../../assets/bg-signup.json";
 
+import "./Register.scss";
+
 export const Register = () => {
-  return <div className='container mx-auto my-5 flex justify-between border border-gray-500'>
-    <div className='h-full w-9/12 border-r-2 border-gray-400 flex justify-center items-center'>
-      <Lottie animationData={bgAnimate} loop={50} />
+
+  return (
+    <div className='register'>
+      <div className='register__img'>
+        <Lottie animationData={bgAnimate} loop={50} />
+      </div>
+
+      <div className='register__form'>
+        <FormRegister />
+      </div>
     </div>
-    <FormRegister />
-  </div>;
+  );
 };

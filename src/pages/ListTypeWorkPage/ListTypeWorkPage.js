@@ -42,14 +42,15 @@ export const ListTypeWorkPage = () => {
         </div>
       </div>
       <div className='list-type-work-page-body grid grid-cols-4 gap-4 m-10 container mx-auto'>
-        <div className=''>
+        <div className='tab-sub-type-work'>
           <TabSubTypeWork
             IndexTypeWork={IndexTypeWork}
             setIndexTypeWork={setIndexTypeWork}
             typeJob={typeJob}
           />
         </div>
-        <div className='col-start-2 col-end-5 grid grid-cols-3 gap-4'>
+          {/* 'col-start-2 col-end-5 grid grid-cols-3 gap-4 */}
+        <div className='card-sub-type-work'>
           {typeJob[IndexTypeWork]?.subTypeJobImg &&
             typeJob[IndexTypeWork].subTypeJobImg[0].map((item) => {
               return (
@@ -77,7 +78,7 @@ export const ListTypeWorkPage = () => {
             })}
         </div>
       </div>
-      <div className='list-type-work-page-footer flex space-x-20 bg-gray-100 p-10'>
+      <div className='list-type-work-page-footer bg-gray-100'>
         <div className='list-type-work-page-footer-item'>
           <h1 className='text-xl'>
             Your <span className=' font-bold'>Terms</span>

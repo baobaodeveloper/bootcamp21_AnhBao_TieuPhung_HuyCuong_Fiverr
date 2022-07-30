@@ -1,13 +1,10 @@
-// Form Login
-
-
 .ant-input,
 .ant-input-affix-wrapper {
   border: none;
   border-bottom: 3px solid black;
 }
 
-.ant-form-item-label>label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional):before {
   content: '';
 }
 
@@ -25,15 +22,18 @@
 }
 
 .ant-input:focus {
-  box-shadow: 0 0 0 0 white;
+  -webkit-box-shadow: 0 0 0 0 white;
+          box-shadow: 0 0 0 0 white;
   border-color: black;
 }
 
 .ant-input-affix-wrapper-focused,
 .ant-input-affix-wrapper:focus {
-  box-shadow: 0 0 0 0 white;
+  -webkit-box-shadow: 0 0 0 0 white;
+          box-shadow: 0 0 0 0 white;
 }
 
 .ant-form-item {
   margin: 0 0 20px;
 }
+/*# sourceMappingURL=FormLogin.css.map */

@@ -1,0 +1,76 @@
+@tailwind components;
+@layer components {
+  .hero-wrapper {
+    @apply lg:h-[680px] sm:h-[415px] h-[320px] relative bg-green-900;
+  }
+  .hero-wrapper .hero-slide {
+    @apply h-full w-full hidden lg:block;
+  }
+  .hero-wrapper .hero-slide .hero-background {
+    @apply lg:flex w-full h-full bg-cover bg-center;
+  }
+  .hero-wrapper .hero-slide .hero-background .seller-name {
+    @apply lg:flex items-end justify-end hidden container mx-auto;
+  }
+  .hero-wrapper .hero-slide .hero-background .seller-name p {
+    @apply text-white py-8 inline-block px-0;
+  }
+  .hero-wrapper .hero-slide .hero-background .seller-name.show-stars p {
+    @apply hidden lg:block before:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/five_stars.e5c37f5.svg')]
+                      before:bg-no-repeat before:content-[''] before:h-[17px] before:block;
+  }
+  .hero-wrapper .hero {
+    @apply lg:h-[680px] sm:h-[415px] min-h-[320px] md:flex container mx-auto md:items-center 
+      md:justify-center lg:justify-start lg:absolute lg:top-0 lg:left-0 
+      lg:right-0 lg:bottom-0 z-[2] lg:px-0 px-6;
+  }
+  .hero-wrapper .hero .header {
+    @apply md:max-w-[650px] max-w-[560px] py-20 lg:py-0 lg:h-auto lg:pl-0 h-full w-full 
+        sm:py-24 sm:px-12;
+  }
+  .hero-wrapper .hero .header h1 {
+    @apply font-bold lg:text-5xl text-white pb-8 md:pb-5 text-3xl lg:pb-6 sm:pb-4 
+          lg:leading-[56px] sm:text-4xl leading-10;
+  }
+  .hero-wrapper .hero .header .font-domaine i {
+    @apply font-medium;
+  }
+  .hero-wrapper .hero .header .search-bar-package {
+    @apply relative z-[5] h-12 block;
+  }
+  .hero-wrapper .hero .header .search-bar-package form {
+    @apply h-auto;
+  }
+  .hero-wrapper .hero .header .search-bar-package form .search-bar-icon {
+    @apply absolute z-[5] w-4 h-4 top-4 left-4 fill-slate-400;
+  }
+  .hero-wrapper .hero .header .search-bar-package form .search-input .ant-input-group {
+    @apply flex relative h-auto lg:flex-row flex-col;
+  }
+  .hero-wrapper .hero .header .search-bar-package form .search-input input {
+    @apply lg:rounded-tl lg:rounded-bl lg:rounded-none text-base h-12 pl-11 mb-0 
+                flex-auto z-[3] pr-[7px] pb-[8px] shadow-none hover:border-gray-400 rounded;
+  }
+  .hero-wrapper .hero .header .search-bar-package form .search-input .ant-input-group-addon {
+    @apply bg-transparent block w-full lg:w-auto;
+  }
+  .hero-wrapper .hero .header .search-bar-package form .search-input button {
+    @apply text-center font-bold h-12 text-base py-3 px-6 lg:rounded-tr lg:rounded-br 
+                   bg-green-500 cursor-pointer leading-none relative mt-4
+                    lg:mt-0 rounded border-none w-full hover:bg-green-600;
+  }
+  .hero-wrapper .hero .header .popular {
+    @apply lg:flex hidden text-sm text-white leading-7 pt-6 font-semibold;
+  }
+  .hero-wrapper .hero .header .popular ul {
+    @apply flex w-full ml-3 list-none;
+  }
+  .hero-wrapper .hero .header .popular ul li {
+    @apply flex mr-3 whitespace-nowrap;
+  }
+  .hero-wrapper .hero .header .popular ul li a {
+    @apply no-underline leading-6 font-semibold rounded-[40px] 
+                 border px-3 z-[4] hover:bg-white hover:text-gray-900;
+  }
+}
+/*# sourceMappingURL=hero.css.map */

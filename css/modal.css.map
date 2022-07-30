@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,SAAS,CAAT,UAAS;AAET,MAAM,CAAN,UAAM;EACF,AAAA,cAAc,CAAC;IACX,MAAM,CAAN,kFAAM;GAST;EAVD,AAEI,cAFU,CAER,cAAc,CAAC;IACb,MAAM,CAAN,wEAAM;GAMT;EATL,AAKY,cALE,CAER,cAAc,CAEV,mBAAmB,CACf,KAAK,AAAA,WAAW,CAAC;IACf,MAAM,CAAN,YAAM;GACT",
+    "sources": [
+        "../src/components/modal/modal.scss"
+    ],
+    "names": [],
+    "file": "modal.css"
+}

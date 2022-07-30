@@ -1,0 +1,26 @@
+@tailwind components;
+@layer components {
+  .marketplace {
+    @apply py-0 w-full mx-auto container lg:mb-24 sm:mb-20 lg:px-8 md:px-8 px-6;
+  }
+  .marketplace h2 {
+    @apply text-3xl mb-10 lg:pb-6 sm:text-3xl font-bold;
+  }
+  .marketplace ul {
+    @apply flex flex-wrap;
+  }
+  .marketplace ul li {
+    @apply lg:w-[20%] sm:pb-14 sm:w-[33.3%] text-center pt-0 px-2.5 pb-8 w-[50%];
+  }
+  .marketplace ul li a {
+    @apply text-center text-[#222325] relative inline-block after:content-[''] 
+          after:absolute after:top-11 after:right-[50%] after:w-12 after:border-b-2 
+          after:border-solid after:border-[#c5c6c9] after:pt-0 
+          after:px-0 after:pb-2 hover:after:border-[#1dbf73] hover:after:w-[74px] 
+          after:transition-[width] after:ease-in-out after:duration-200 after:translate-x-1/2;
+  }
+  .marketplace ul li a img {
+    @apply block h-12 w-12 mt-0 mx-auto mb-4;
+  }
+}
+/*# sourceMappingURL=marketplace.css.map */

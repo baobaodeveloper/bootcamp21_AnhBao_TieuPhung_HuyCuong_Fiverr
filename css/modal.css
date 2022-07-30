@@ -1,0 +1,13 @@
+@tailwind components;
+@layer components {
+  .modal-package {
+    @apply bg-modal flex justify-center items-center fixed z-50 top-0 right-0 left-0 bottom-0;
+  }
+  .modal-package .modal-content {
+    @apply lg:max-w-4xl sm:w-[70vw] relative bg-transparent sm:max-h-[90vh] rounded;
+  }
+  .modal-package .modal-content .modal-content-body video.orca-video {
+    @apply object-cover;
+  }
+}
+/*# sourceMappingURL=modal.css.map */
