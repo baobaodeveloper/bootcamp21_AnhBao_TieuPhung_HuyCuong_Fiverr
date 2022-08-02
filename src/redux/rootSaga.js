@@ -1,4 +1,5 @@
 import { all, call } from 'redux-saga/effects';
+import { followSearchJob } from '../pages/HomePage/homeSaga';
 import { followGetListWork } from '../pages/ListWorkPage/listWorkSaga';
 import {
   followCreateJob,
@@ -14,5 +15,6 @@ export function* rootSaga() {
     call(followCreateJob),
     call(followGetListWork),
     call(followGetJobFromSubType),
+    call(followSearchJob),
   ]);
 }

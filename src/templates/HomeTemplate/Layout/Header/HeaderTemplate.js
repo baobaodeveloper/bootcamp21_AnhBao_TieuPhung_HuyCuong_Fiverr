@@ -1,15 +1,21 @@
-import React, { useEffect, useState, useParams, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
-import { RiEarthLine } from 'react-icons/ri';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { Drawer } from 'antd';
+import React, { useCallback, useEffect, useState } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
 import ButtonGreen from '../../../../components/button/ButtonGreen';
-import { HeaderTypeWork } from './HeaderTypeWork';
 import { localStorageService } from '../../../../services/localStorageService';
+import { HeaderTypeWork } from './HeaderTypeWork';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { SEARCH_JOB } from '../../../../constants/globalVariable';
+import { useRef } from 'react';
 
 export const HeaderTemplate = ({ position }) => {
   const [visible, setVisible] = useState(false);
   const [header, setHeader] = useState(false);
+  const searchValue = useRef('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     if (position === 'fixed') {
       setHeader(true);
@@ -27,16 +33,20 @@ export const HeaderTemplate = ({ position }) => {
 
   // handle case chưa login thì không thể vào homepage && đăng nhập rồi nhấn F5 thì homepage vẫn render bình thường
   let { user } = localStorageService.getUserLocal() || true;
-  
+
   let handleLogout = useCallback(() => {
     localStorageService.removeUserLocal();
-    window.location.href = "/login";
-  }, [])
+    window.location.href = '/login';
+  }, []);
 
   return (
     <>
       <Drawer
-        title={<ButtonGreen title='Join Fiverr' path='/register' />}
+        title={
+          !user && (
+            <ButtonGreen title='Join Fiverr' path='/register' />
+          )
+        }
         placement='left'
         closable={false}
         onClose={() => setVisible(false)}
@@ -45,80 +55,61 @@ export const HeaderTemplate = ({ position }) => {
         width='250px'
       >
         <div className='flex flex-col gap-y-3'>
-          <NavLink
-            to='/login'
-            className='text-gray-700 text-xl font-semibold '
-          >
-            Sign In
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-gray-700 text-xl font-semibold '
-          >
-            Browser Categories
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-gray-700 text-xl font-semibold '
-          >
-            Explore
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-green-400 text-xl font-semibold'
-          >
-            Fiverr Business
-          </NavLink>
-        </div>
-        <p className='text-black text-lg py-3 font-semibold border-b my-10'>
-          General
-        </p>
-        <div className='flex flex-col gap-y-4'>
-          <NavLink
-            to='/login'
-            className='text-gray-700 text-xl font-semibold '
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-gray-700 text-xl font-semibold '
-          >
-            Browser Categories
-          </NavLink>
-          <NavLink
-            to='/'
-            className=' text-gray-700 flex items-center text-xl font-semibold  gap-x-2 '
-          >
-            <span>English</span>
-            <RiEarthLine />
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-gray-700 text-xl font-semibold'
-          >
-            $ USD
-          </NavLink>
-          <NavLink
-            to='/'
-            className='text-gray-700 text-xl font-semibold'
-          >
-            Open in App
-          </NavLink>
+          {user ? (
+            <div className='text-xl flex flex-col'>
+              <NavLink
+                to={'/user'}
+                className='self-center flex flex-col items-center gap-y-5 rounded font-semibold hover:text-green-500 transition-all'
+              >
+                <div className='w-[80px] h-[80px] bg-slate-500 rounded-full flex justify-center items-center text-xl text-white font-semibold'>
+                  {
+                    user.name.split(' ')[
+                      user.name.split(' ').length - 1
+                    ]
+                  }
+                </div>
+                {user.name}
+              </NavLink>
+              <NavLink to='/register' className='self-center mt-5'>
+                <button
+                  className='bg-green-400 px-6 py-1 font-semibold border-2 border-white rounded-md text-white'
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </NavLink>
+            </div>
+          ) : (
+            <div className=' text-xl'>
+              <NavLink
+                to='/login'
+                className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
+              >
+                Sign in
+              </NavLink>
+              <NavLink
+                to='/register'
+                className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
+              >
+                Join
+              </NavLink>
+            </div>
+          )}
         </div>
       </Drawer>
       <header
         id='header-template'
-        className={`${header
-          ? `text-white bg-transparent ${position} z-10  w-screen top-0`
-          : `text-gray-800 bg-white ${position} z-10  w-screen top-0`
-          } `}
+        className={`${
+          header
+            ? `text-white bg-transparent ${position} z-10  w-screen top-0`
+            : `text-gray-800 bg-white ${position} z-10  w-screen top-0`
+        } `}
       >
         <div className='container flex justify-between items-center h-16 mx-auto py-12'>
           <div className='flex items-center'>
             <button
               onClick={() => setVisible(true)}
-              className='p-4 xl:hidden text-3xl font-semibold mt-1 cursor-pointer'
+              className='p-4 md:hidden text-3xl font-semibold mt-1 cursor-pointer'
             >
               <GiHamburgerMenu />
             </button>
@@ -157,106 +148,71 @@ export const HeaderTemplate = ({ position }) => {
                     </button>
                   </span>
                   <input
-                    type='search'
+                    ref={searchValue}
+                    type='text'
                     name='Search'
                     placeholder='Search...'
                     className='w-[250px] py-2 pl-10 pr-2 text-sm rounded-md  focus:outline-none'
                   />
                 </div>
-                <button className='bg-green-500 text-white absolute cursor-pointer  inline-block top-0  px-3 right-0 bottom-0 font-semibold text-lg'>
+                <button
+                  onClick={() => {
+                    dispatch({
+                      type: SEARCH_JOB,
+                      payload: searchValue.current.value,
+                    });
+                    navigate(
+                      `/list_work/${searchValue.current.value}`
+                    );
+                  }}
+                  className='bg-green-500 text-white absolute cursor-pointer  inline-block top-0  px-3 right-0 bottom-0 font-semibold text-lg'
+                >
                   Search
                 </button>
               </div>
             )}
           </div>
-          <ul className='items-stretch xl:flex hidden space-x-3  ml-auto'>
-            <li className='flex text-xl font-semibold'>
-              <NavLink
-                to='/'
-                className='flex items-center px-4 hover:text-green-500 transition-all'
-              >
-                Feverr Business
-              </NavLink>
-            </li>
-            <li className='flex text-xl font-semibold'>
-              <NavLink
-                to='/'
-                className='flex items-center px-4 hover:text-green-500 transition-all'
-              >
-                Explore
-              </NavLink>
-            </li>
 
-            <li className=' text-xl font-semibold flex'>
+          {user ? (
+            <div className='items-center hidden md:inline-block flex-shrink-0  text-xl'>
               <NavLink
-                to='/'
-                className='flex items-center px-4 gap-x-2 hover:text-green-500 transition-all'
+                to='/user'
+                className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
               >
-                <RiEarthLine />
-                <span>English</span>
+                {user.name}
               </NavLink>
-            </li>
-
-            <li className=' text-xl font-semibold flex'>
               <NavLink
-                to='/'
-                className='flex items-center  px-4 hover:text-green-500 transition-all'
+                to='/register'
+                className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
               >
-                US$ USD
+                <button onClick={handleLogout}>Log out</button>
               </NavLink>
-            </li>
-
-            <li className='flex text-xl font-semibold'>
-              <NavLink
-                to='/'
-                className='flex items-center px-4 hover:text-green-500 transition-all'
-              >
-                Become a Seller
-              </NavLink>
-            </li>
-          </ul>
-          {
-            user ?
-              (<div className='items-center flex-shrink-0  text-xl'>
-                <NavLink
-                  to='/login'
-                  className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
-                >
-                  {user.name}
-                </NavLink>
-                <NavLink
-                  to='/register'
-                  className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
-                >
-                  <button onClick={handleLogout}>Log out</button>
-                </NavLink>
-              </div>) :
-              (<div className='items-center flex-shrink-0  text-xl'>
-                <NavLink
-                  to='/login'
-                  className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
-                >
-                  Sign in
-                </NavLink>
-                <NavLink
-                  to='/register'
-                  className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
-                >
-                  Join
-                </NavLink>
-              </div>)
-          }
-        </div>
-        {
-          !header && (
-            <div className='border-t border-b px-4'>
-              <div className='container mx-auto text-lg font-semibold'>
-                <HeaderTypeWork />
-              </div>
             </div>
-          )
-        }
-      </header >
+          ) : (
+            <div className='items-center hidden md:inline-block  flex-shrink-0  text-xl'>
+              <NavLink
+                to='/login'
+                className='self-center px-4 py-3 rounded font-semibold hover:text-green-500 transition-all'
+              >
+                Sign in
+              </NavLink>
+              <NavLink
+                to='/register'
+                className='self-center px-6 py-1 font-semibold border-2 border-white rounded-md hover:text-white hover:bg-green-400 transition-colors duration-300 hover:border-green-400'
+              >
+                Join
+              </NavLink>
+            </div>
+          )}
+        </div>
+        {!header && (
+          <div className='border-t border-b px-4 hidden lg:block'>
+            <div className='container mx-auto text-lg font-semibold'>
+              <HeaderTypeWork />
+            </div>
+          </div>
+        )}
+      </header>
     </>
   );
 };

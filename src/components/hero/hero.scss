@@ -44,6 +44,9 @@
             & .search-input {
               & .ant-input-group {
                 @apply flex relative h-auto lg:flex-row flex-col;
+                & .ant-input {
+                  @apply border-b-0;
+                }
               }
               & input {
                 @apply lg:rounded-tl lg:rounded-bl lg:rounded-none text-base h-12 pl-11 mb-0 

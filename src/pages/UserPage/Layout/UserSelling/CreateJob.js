@@ -1,6 +1,5 @@
 import { Form, Input, InputNumber, Select, Switch } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { BsImage } from 'react-icons/bs';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_USER_JOB } from '../../../../constants/globalVariable';
 import './index.scss';
@@ -22,8 +21,6 @@ const validateMessages = {
 export const CreateJob = ({ setVisible }) => {
   const dispatch = useDispatch();
   const { typeJob } = useSelector((state) => state.headerReducer);
-
-  const [imageUpload, setImageUpload] = useState(null);
   const [listSubJob, setListSubJob] = useState([]);
 
   const onFinish = (values) => {
@@ -38,15 +35,6 @@ export const CreateJob = ({ setVisible }) => {
     const subJob = typeJob.find((item) => item.id === job);
     setListSubJob(subJob.subTypeJobs);
   };
-
-  useEffect(() => {
-    if (imageUpload === null) return;
-    document.getElementById('imgJob').src =
-      URL.createObjectURL(imageUpload);
-    const fd = new FormData();
-    // fd.append('image', imageUpload, imageUpload?.name);
-    console.log(fd);
-  }, [imageUpload]);
 
   return (
     <div id='create-job'>
@@ -187,31 +175,6 @@ export const CreateJob = ({ setVisible }) => {
                   })}
               </Select>
             </Form.Item>
-          </div>
-        </div>
-
-        <div>
-          <div className='mt-5'>
-            <div className='w-[150px] h-[150px] relative bg-slate-500 rounded-lg overflow-hidden'>
-              <div className='absolute w-full h-full top-0 left-0 flex justify-center items-center'>
-                <BsImage className='text-7xl text-white' />
-              </div>
-              <Form.Item name='image'>
-                <input
-                  className='absolute cursor-pointer z-20 w-full h-full top-0 left-0 opacity-0 '
-                  type='file'
-                  onChange={(e) => {
-                    console.log(e.target.files[0]);
-                    setImageUpload(e.target.files[0]);
-                  }}
-                />
-              </Form.Item>
-              <img
-                className='w-full h-full object-cover'
-                id='imgJob'
-                alt=''
-              />
-            </div>
           </div>
         </div>
 

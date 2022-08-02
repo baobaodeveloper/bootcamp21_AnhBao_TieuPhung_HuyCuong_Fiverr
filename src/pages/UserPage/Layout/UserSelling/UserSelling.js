@@ -20,7 +20,7 @@ export const UserSelling = () => {
       );
     }
   }, [listWork, user]);
-  console.log(listWorkUserCreate);
+
   return (
     <div className='grid grid-cols-3 gap-y-5 justify-items-center'>
       {listWorkUserCreate.length > 0 &&

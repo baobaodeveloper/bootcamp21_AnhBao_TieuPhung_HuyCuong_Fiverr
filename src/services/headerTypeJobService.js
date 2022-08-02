@@ -10,5 +10,8 @@ class HeaderTypeJobs extends BaseService {
   getAllJobFromSubType = (id) => {
     return this.get(`api/jobs/by-sub-type?subType=${id}`);
   };
+  searchJob = (name) => {
+    return this.get(`api/jobs/by-name?name=${name}`);
+  };
 }
 export const headerApi = new HeaderTypeJobs();

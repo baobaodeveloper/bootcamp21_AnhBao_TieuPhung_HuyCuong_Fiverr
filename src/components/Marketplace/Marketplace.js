@@ -31,7 +31,7 @@ export default function Marketplace() {
       <ul>
         {typeJob.map((item, index) => {
           return (
-            <li key={item._id}>
+            <li key={item.id}>
               <a href={`/list_type/${item.name}`}>
                 <img
                   src={imgSources[index]}
