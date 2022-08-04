@@ -33,13 +33,25 @@ export class BaseService {
       },
     });
   };
+  postImageJob = (url, model) => {
+    return axios({
+      url: `${DOMAIN}/${url}`,
+      method: 'POST',
+      data: model,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        token: TOKEN,
+        tokenByClass: TOKEN_CYBER,
+      },
+    });
+  };
   postAvatar = (url, model) => {
     return axios({
       url: `${DOMAIN}/${url}`,
       method: 'POST',
       data: model,
       headers: {
-        // 'Content-Type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data',
         token: TOKEN,
         tokenByClass: TOKEN_CYBER,
       },
@@ -66,9 +78,9 @@ export class BaseService {
       },
     });
   };
-  delete = (url) => {
+  delete = (url, id) => {
     return axios({
-      url: `${DOMAIN}/${url}`,
+      url: `${DOMAIN}/${url}/${id}`,
       method: 'DELETE',
       headers: {
         token: TOKEN,

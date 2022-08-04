@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { Dropdown, Menu } from 'antd';
+import { useSelector } from 'react-redux';
 
 export const SortByRelevance = () => {
+  const { lengthListWork } = useSelector(
+    (state) => state.listWorkPageReducer
+  );
   const [arrow, setArrow] = useState(false);
   return (
     <div className='flex justify-between items-center mt-3 mb-8 text-lg text-[#74767e]'>
-      <span>28,140 services available</span>
+      <span>{lengthListWork} services available</span>
       <div>
         <Dropdown
           overlayClassName='sort-relevance'

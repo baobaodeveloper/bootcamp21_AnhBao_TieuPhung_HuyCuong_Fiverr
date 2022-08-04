@@ -1,41 +1,37 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BsCameraFill } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
 import { IoIosPin } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  GET_INFOR_USER,
-  SUCCESS,
-} from '../../../../constants/globalVariable';
+import { useSelector } from 'react-redux';
+import { SUCCESS } from '../../../../constants/globalVariable';
 import { userInfor } from '../../../../services/userSevice';
 import { EditProfile } from './EditProfile';
+import { useDispatch } from 'react-redux';
+import { actionLoading } from '../../../../components/loading/loadingSlice';
 
 export const AvatarUser = () => {
-  const id = useSelector((state) => state.userSlice.user.user._id);
   const dispatch = useDispatch();
+
   const [updateAvatar, setUpdateAvatar] = useState(false);
   const { user } = useSelector((state) => state.userPageReducer);
 
   const [imageUpload, setImageUpload] = useState(null);
   const uploadImage = async () => {
-    if (imageUpload === null) return;
-    let formData = new FormData();
-
-    formData.append('avatar', imageUpload, imageUpload.name);
-
     try {
+      if (imageUpload === null) return;
+      let formData = new FormData();
+
+      formData.append('avatar', imageUpload, imageUpload.name);
+      dispatch(actionLoading.turnOnLoading());
       const res = await userInfor.updateAvatarUser(formData);
       console.log(res);
       if (res.status === SUCCESS) {
-        dispatch({
-          type: GET_INFOR_USER,
-          payload: id,
-        });
         setImageUpload(null);
+        dispatch(actionLoading.turnOffLoading());
       }
     } catch (error) {
       console.log(error);
+      dispatch(actionLoading.turnOffLoading());
     }
   };
   useEffect(() => {
@@ -46,13 +42,6 @@ export const AvatarUser = () => {
   }, [imageUpload]);
   return (
     <div className='flex flex-col w-full p-[30px] bg-white border rounded-sm border-[#dadbdd]'>
-      <div className='w-[100px] h-[100px] rounded-full'>
-        <img
-          className='w-full h-full object-cover'
-          src={user.avatar}
-          alt='img'
-        />
-      </div>
       <div>
         <div className='w-[150px] h-[150px] group relative mx-auto rounded-full bg-[#e4e5e7] flex overflow-hidden justify-center items-center'>
           {/* {user?.avatar ? ( */}

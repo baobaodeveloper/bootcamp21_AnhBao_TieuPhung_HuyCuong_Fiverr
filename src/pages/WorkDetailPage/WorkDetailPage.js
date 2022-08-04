@@ -1,17 +1,15 @@
-import { MenuWorkDetail } from './Layout/MenuWorkDetail';
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { GET_DETAIL_JOB } from '../../constants/globalVariable';
 import { AboutSeller } from './Layout/AboutSeller/AboutSeller';
 import { Comment } from './Layout/Comments/Comment';
 import { Description } from './Layout/Description';
 import { Faq } from './Layout/Faq';
+import { MenuWorkDetail } from './Layout/MenuWorkDetail';
 import { Overview } from './Layout/Overview/Overview';
 import { OverviewPricing } from './Layout/OverviewPricing';
 import { Recommandations } from './Layout/Recommandations';
-import { useEffect } from 'react';
-import { SUCCESS } from '../../constants/globalVariable';
-import { workDetailActions } from './workDetailSlice';
-import { listWorkApi } from '../../services/listWorkService';
 
 export const WorkDetailPage = () => {
   const { id } = useParams();
@@ -19,19 +17,8 @@ export const WorkDetailPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await listWorkApi.getWorkDetail(id);
-        if (res.status === SUCCESS) {
-          const { data } = res;
-          dispatch(workDetailActions.getDetailWorks(data));
-        }
-      } catch (error) {
-        console.log('Failed fetch data', error);
-      }
-    };
-    fetchData();
-  }, [id]);
+    dispatch({ type: GET_DETAIL_JOB, payload: id });
+  }, [id, dispatch]);
   return (
     <div>
       <MenuWorkDetail />

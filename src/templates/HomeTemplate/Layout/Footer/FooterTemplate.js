@@ -12,7 +12,7 @@ import { ImAccessibility } from 'react-icons/im';
 
 export const FooterTemplate = () => {
   return (
-    <footer className='py-6 border-t flex justify-center items-center bg-slate-600 text-white'>
+    <footer className='py-6 border-t flex justify-center items-center bg-slate-600 text-white mt-auto'>
       <div className='container px-6 space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50'>
         <div className='flex lg:justify-between flex-wrap justify-center  text-center  pt-6 '>
           <div className='flex items-center lg:justify-start justify-center gap-x-5'>

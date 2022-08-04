@@ -4,9 +4,11 @@ export const listWorkPageSlice = createSlice({
   name: 'listWorkPage',
   initialState: {
     listWork: [],
+    lengthListWork: 0,
   },
   reducers: {
     getListWorkPage: (state, action) => {
+      state.lengthListWork = action.payload?.length;
       const chunkSize = 12;
       let chunk = [];
       for (let i = 0; i < action.payload.length; i += chunkSize) {

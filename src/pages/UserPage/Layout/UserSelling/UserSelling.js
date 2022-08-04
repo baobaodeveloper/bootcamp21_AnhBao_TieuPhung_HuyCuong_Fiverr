@@ -3,9 +3,11 @@ import { CardSelling } from './CardSelling';
 import { BsPlusLg } from 'react-icons/bs';
 import { Modal } from 'antd';
 import { CreateJob } from './CreateJob';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { userPageAction } from '../../userSlice';
 
 export const UserSelling = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userPageReducer);
   const { listWork } = useSelector(
     (state) => state.listWorkPageReducer
@@ -22,10 +24,16 @@ export const UserSelling = () => {
   }, [listWork, user]);
 
   return (
-    <div className='grid grid-cols-3 gap-y-5 justify-items-center'>
+    <div className='grid md:grid-cols-3 grid-cols-2 gap-y-5 justify-items-center'>
       {listWorkUserCreate.length > 0 &&
         listWorkUserCreate.map((job) => {
-          return <CardSelling job={job} key={job._id} />;
+          return (
+            <CardSelling
+              setVisible={setVisible}
+              job={job}
+              key={job._id}
+            />
+          );
         })}
 
       <div className='w-[232px] h-[260px] flex justify-center items-center  border rounded-sm border-[#dadbdd] bg-white'>
@@ -34,7 +42,9 @@ export const UserSelling = () => {
             onClick={() => setVisible(true)}
             className='w-[66px] h-[66px] bg-[#78cdd2] text-white text-3xl flex justify-center items-center rounded-full cursor-pointer'
           >
-            <BsPlusLg />
+            <BsPlusLg
+              onClick={() => dispatch(userPageAction.editMode())}
+            />
           </div>
           <div>
             <Modal

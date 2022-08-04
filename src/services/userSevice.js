@@ -15,6 +15,15 @@ class UserService extends BaseService {
   createJob = (data) => {
     return this.post('api/jobs', data);
   };
+  deleteJob = (id) => {
+    return this.delete('api/jobs', id);
+  };
+  updateJob = (data, id) => {
+    return this.put(`api/jobs/${id}`, data);
+  };
+  updateImageJob = (id, data) => {
+    return this.postImageJob(`api/jobs/upload-image/${id}`, data);
+  };
 }
 
 export const userInfor = new UserService();

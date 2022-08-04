@@ -23,7 +23,7 @@ const HomeTemplate = ({ children, position }) => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className='min-h-screen flex flex-col'>
       <HeaderTemplate position={position} />
       {children}
       <FooterTemplate />

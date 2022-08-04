@@ -1,12 +1,16 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, delay, put, takeLatest } from 'redux-saga/effects';
+import { actionLoading } from '../../components/loading/loadingSlice';
 import {
   CREATE_USER_JOB,
+  DELETE_JOB,
   GET_INFOR_USER,
   GET_LIST_WORK,
   SUCCESS,
   UPDATE,
   UPDATE_INFOR_USER,
+  UPDATE_JOB,
 } from '../../constants/globalVariable';
+import { listWorkApi } from '../../services/listWorkService';
 import { userInfor } from '../../services/userSevice';
 import { userPageAction } from './userSlice';
 
@@ -30,7 +34,7 @@ export function* followGetInforUser() {
 
 function* updateUserInfor(action) {
   try {
-    const res = yield call(() =>
+    yield call(() =>
       userInfor.updateUser(
         action.payload.id,
         action.payload.userUpdate
@@ -45,10 +49,9 @@ export function* followUpdateUser() {
 }
 
 function* createJobUser(action) {
-  console.log(JSON.stringify(action.payload));
   try {
     const res = yield call(() => userInfor.createJob(action.payload));
-    console.log(res.data);
+
     if (res.status === UPDATE) {
       yield put({ type: GET_LIST_WORK });
     }
@@ -58,4 +61,44 @@ function* createJobUser(action) {
 }
 export function* followCreateJob() {
   yield takeLatest(CREATE_USER_JOB, createJobUser);
+}
+
+function* deleteJob(action) {
+  try {
+    yield put(actionLoading.turnOnLoading());
+    yield delay(500);
+    const res = yield call(() => userInfor.deleteJob(action.payload));
+    console.log(res);
+    if (res.status === SUCCESS) {
+      yield put(() => listWorkApi.getListWork());
+      yield put({ type: GET_LIST_WORK });
+      yield put(actionLoading.turnOffLoading());
+    }
+  } catch (error) {
+    console.log(error);
+    yield put(actionLoading.turnOffLoading());
+  }
+}
+export function* followDeleteJob() {
+  yield takeLatest(DELETE_JOB, deleteJob);
+}
+function* updateJobDetail(action) {
+  try {
+    yield put(actionLoading.turnOnLoading());
+    yield delay(500);
+    const res = yield call(() =>
+      userInfor.updateJob(action.payload.data, action.payload.id)
+    );
+    if (res.status === SUCCESS) {
+      yield put(() => listWorkApi.getListWork());
+      yield put({ type: GET_LIST_WORK });
+      yield put(actionLoading.turnOffLoading());
+    }
+  } catch (error) {
+    console.log(error);
+    yield put(actionLoading.turnOffLoading());
+  }
+}
+export function* followUpdateJob() {
+  yield takeLatest(UPDATE_JOB, updateJobDetail);
 }

@@ -1,7 +1,12 @@
 import { Form, Input, InputNumber, Select, Switch } from 'antd';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CREATE_USER_JOB } from '../../../../constants/globalVariable';
+import {
+  CREATE_USER_JOB,
+  UPDATE_JOB,
+} from '../../../../constants/globalVariable';
+import { userPageAction } from '../../userSlice';
 import './index.scss';
 
 /* eslint-disable no-template-curly-in-string */
@@ -19,16 +24,42 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 export const CreateJob = ({ setVisible }) => {
+  const { editJob } = useSelector((state) => state.userPageReducer);
+  const { editMode } = useSelector((state) => state.userPageReducer);
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const { typeJob } = useSelector((state) => state.headerReducer);
   const [listSubJob, setListSubJob] = useState([]);
-
+  const [valueField, setValueField] = useState(editJob);
   const onFinish = (values) => {
-    console.log(values);
-    dispatch({
-      type: CREATE_USER_JOB,
-      payload: values,
-    });
+    if (editMode) {
+      const idTypeJob = typeJob.filter(
+        (typeJob) => typeJob.name === values.type
+      )[0];
+      const idSubTypeJob = idTypeJob.subTypeJobs.filter(
+        (subTypeJob) => subTypeJob.label === values.subType
+      )[0];
+      let data = {
+        ...values,
+        type: idTypeJob.id,
+        subType: idSubTypeJob.key,
+      };
+      console.log(data);
+      dispatch({
+        type: UPDATE_JOB,
+        payload: {
+          data: data,
+          id: editJob.id,
+        },
+      });
+      dispatch(userPageAction.editJob());
+    } else {
+      dispatch({
+        type: CREATE_USER_JOB,
+        payload: values,
+      });
+    }
+    form.resetFields();
   };
 
   const handleChangeListSubJob = (job) => {
@@ -36,20 +67,20 @@ export const CreateJob = ({ setVisible }) => {
     setListSubJob(subJob.subTypeJobs);
   };
 
+  useEffect(() => {
+    form.setFieldsValue(valueField);
+  }, [valueField]);
+
+  useEffect(() => {
+    setValueField(editJob);
+  }, [editJob]);
   return (
     <div id='create-job'>
       <Form
-        onFinish={onFinish}
-        initialValues={{
-          proServices: false,
-          localSellers: false,
-          onlineSellers: false,
-          deliveryTime: false,
-          type: '',
-          subType: '',
-          image: '',
-        }}
+        form={form}
+        // initialValues={valueField}
         validateMessages={validateMessages}
+        onFinish={onFinish}
       >
         <Form.Item
           labelCol={{
@@ -186,13 +217,27 @@ export const CreateJob = ({ setVisible }) => {
           >
             Cancel
           </button>
-          <button
-            // onClick={() => setVisible(false)}
-            type='submit'
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '
-          >
-            Submit
-          </button>
+          {editMode ? (
+            <button
+              onClick={() => {
+                setVisible(false);
+              }}
+              type='submit'
+              className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '
+            >
+              Change Job
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setVisible(false);
+              }}
+              type='submit'
+              className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 '
+            >
+              Submit
+            </button>
+          )}
         </div>
       </Form>
     </div>

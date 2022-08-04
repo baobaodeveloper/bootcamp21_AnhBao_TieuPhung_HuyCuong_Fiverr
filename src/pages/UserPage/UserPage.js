@@ -29,12 +29,12 @@ export const UserPage = () => {
     dispatch({ type: GET_LIST_WORK });
   }, [dispatch]);
   return (
-    <div className='bg-[#f7f7f7]'>
-      <div className='container mx-auto py-10 xl:py-20 px-5 gap-x-5 xl:gap-x-20 lg:flex hidden justify-between items-start'>
+    <div className='bg-[#f7f7f7] h-full flex-1'>
+      <div className='container mx-auto py-10 xl:py-20 px-5 gap-x-5 xl:gap-x-20 lg:flex hidden justify-between items-start h-full'>
         <div className='lg:w-[400px]'>
           <InforDetail />
         </div>
-        <div className='flex-1 p-[30px] bg-white border rounded-sm border-[#dadbdd]'>
+        <div className='flex-1 p-[30px] bg-white border rounded-sm border-[#dadbdd] h-full'>
           <Tabs defaultActiveKey='1' onChange={onChange}>
             <TabPane
               tab={
