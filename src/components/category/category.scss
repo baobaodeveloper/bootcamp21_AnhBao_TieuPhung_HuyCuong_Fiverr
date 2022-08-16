@@ -1,60 +1,118 @@
-@tailwind components;
-
-@layer components {
-  .category-carousel-wrapper {
-    @apply m-0 pt-6 px-6 pb-12 sm:m-0 sm:pt-8 sm:px-8 sm:pb-16 w-full;
+.category-carousel-wrapper .slick-slider {
+  margin-left: -6px;
+  margin-right: -6px;
+  @media (min-width: 640px) {
+    margin-left: -9px;
+    margin-right: -9px;
   }
-  & .category-carousel {
-    @apply mt-0 mx-auto mb-12 sm:mb-20 lg:mb-24 container lg:h-[410px];
-    & h2 {
-      @apply lg:pb-6 pb-5 sm:text-3xl sm:leading-tight text-2xl leading-snug font-bold;
+  @media (min-width: 1024px) {
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+  button {
+    font-size: 0px;
+    &.slick-prev {
+      left: -17px;
+      border-radius: 30px;
+      &:after {
+        content: " ";
+        background-image: url("https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg") !important;
+        background-repeat: no-repeat;
+        background-position: 0 -32px;
+        height: 1rem;
+        width: 1rem;
+        margin-top: 0.25rem;
+        background-size: 16px 64px;
+        display: inline-block;
+      }
+      &:before {
+        display: none;
+      }
     }
-    & .slider-package {
-      @apply h-[345px];
-      & .slick-slider {
-        @apply lg:-mx-[18px] sm:mx-[-9px] mx-[-6px];
-        & button {
-          @apply text-[0px];
-          &.slick-prev {
-            @apply lg:left-[-8px] left-[-17px] rounded-[30px] after:content-[''] 
-            after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
-                after:bg-no-repeat after:bg-arrow-l after:h-4 after:w-4 
-                after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
-          }
-          &.slick-next {
-            @apply lg:right-[-8px] rounded-[30px] after:content-[''] 
-            after:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg')] 
-                after:bg-no-repeat after:bg-arrow-r after:h-4 after:w-4 
-                after:mt-1 after:bg-arrow-size after:inline-block before:hidden;
-          }
-          &.slick-arrow {
-            @apply bg-white absolute z-[4] top-1/2 w-12 h-12 
-            text-center shadow-arrow border-0 leading-none;
-          }
+    &.slick-next {
+      right: -17px;
+      border-radius: 30px;
+      &:after {
+        content: " ";
+        background-image: url("https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg") !important;
+        background-repeat: no-repeat;
+        background-position: 0 -48px;
+        height: 1rem;
+        width: 1rem;
+        margin-top: 0.25rem;
+        background-size: 16px 64px;
+        display: inline-block;
+      }
+      &:before {
+        display: none;
+      }
+    }
+    &.slick-arrow {
+      background-color: rgb(255, 255, 255);
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      width: 3rem;
+      height: 3rem;
+      text-align: center;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+      border-width: 0px;
+      line-height: 1;
+    }
+  }
+  .slick-list {
+    .slick-track {
+      min-width: 100%;
+    }
+    .slick-slide {
+      display: block;
+      padding-left: 6px;
+      padding-right: 6px;
+      @media (min-width: 640px) {
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+      @media (min-width: 1024px) {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+    .subcategory-wrapper {
+      height: 345px;
+      @media (min-width: 1024px) {
+        width: 257px;
+      }
+      a {
+        position: relative;
+        display: block;
+        h4 {
+          position: relative;
+          z-index: 1;
+          color: white;
+          padding: 1rem;
+          font-size: 1.5rem;
+          line-height: 2rem;
+          font-weight: 700;
         }
-        & .slick-list {
-          & .slick-track {
-            @apply min-w-full;
-          }
-          & .slick-slide {
-            @apply lg:px-[18px] sm:px-[9px] px-[6px] block;
-          }
-          & .subcategory-wrapper {
-            @apply h-[345px] lg:w-[257px];
-            & a {
-              @apply relative block;
-              & h4 {
-                @apply relative z-[1] text-white p-4 text-2xl font-bold;
-              }
-              & small {
-                @apply text-sm block font-normal;
-              }
-            }
-            & img {
-              @apply object-cover absolute h-[345px] w-full rounded top-0 
-              hover:opacity-80 transition-opacity duration-300 ease-in-out;
-            }
-          }
+        small {
+          display: block;
+          font-weight: 400;
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+        }
+      }
+      img {
+        object-fit: cover;
+        position: absolute;
+        height: 345px;
+        width: 100%;
+        border-radius: 0.25rem;
+        top: 0px;
+        transition-property: opacity;
+        transition-duration: 300ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        &:hover {
+          opacity: 0.8;
         }
       }
     }

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./category.scss";
 
+
 export default function Category() {
   const dataImg = [
     {
@@ -201,10 +202,10 @@ export default function Category() {
     ],
   };
   return (
-    <div className='category-carousel-wrapper'>
-      <div className='category-carousel'>
-        <h2>Popular professional services</h2>
-        <div className='slider-package'>
+    <div className='category-carousel-wrapper m-0 pt-6 px-6 pb-12 sm:m-0 sm:pt-8 sm:px-8 sm:pb-16 w-full'>
+      <div className='category-carousel container mt-0 mx-auto sm:mb-20 lg:h-[410px]'>
+        <h2 className='lg:pb-6 pb-5 sm:text-3xl sm:leading-tight text-2xl leading-snug font-bold'>Popular professional services</h2>
+        <div className='slider-package h-[345px]'>
           <Slider {...settings}>{listImg}</Slider>
         </div>
       </div>

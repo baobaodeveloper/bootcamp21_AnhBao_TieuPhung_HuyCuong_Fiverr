@@ -1,82 +1,78 @@
-@tailwind components;
+ .search-input {
+  .ant-input-group {
+    display: flex;
+    position: relative;
+    height: auto;
+    flex-direction: column;
 
-@layer components {
-  .hero-wrapper {
-    @apply lg:h-[680px] sm:h-[415px] h-[320px] relative bg-green-900;
-    & .hero-slide {
-      @apply h-full w-full hidden lg:block;
-      & .hero-background {
-        @apply lg:flex w-full h-full bg-cover bg-center;
-        & .seller-name {
-          @apply lg:flex items-end justify-end hidden container mx-auto;
-          & p {
-            @apply text-white py-8 inline-block px-0;
-          }
-          &.show-stars p {
-            @apply hidden lg:block before:bg-[url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/five_stars.e5c37f5.svg')]
-                      before:bg-no-repeat before:content-[''] before:h-[17px] before:block;
-          }
-        }
-      }
+    @media (min-width: 1024px) {
+      flex-direction: row;
     }
-    // Search
-    & .hero {
-      @apply lg:h-[680px] sm:h-[415px] min-h-[320px] md:flex container mx-auto md:items-center 
-      md:justify-center lg:justify-start lg:absolute lg:top-0 lg:left-0 
-      lg:right-0 lg:bottom-0 z-[2] lg:px-0 px-6;
-      & .header {
-        @apply md:max-w-[650px] max-w-[560px] py-20 lg:py-0 lg:h-auto lg:pl-0 h-full w-full 
-        sm:py-24 sm:px-12;
-        & h1 {
-          @apply font-bold lg:text-5xl text-white pb-8 md:pb-5 text-3xl lg:pb-6 sm:pb-4 
-          lg:leading-[56px] sm:text-4xl leading-10;
-        }
-        & .font-domaine i {
-          @apply font-medium;
-        }
-        & .search-bar-package {
-          @apply relative z-[5] h-12 block;
-          & form {
-            @apply h-auto;
-            & .search-bar-icon {
-              @apply absolute z-[5] w-4 h-4 top-4 left-4 fill-slate-400;
-            }
-            & .search-input {
-              & .ant-input-group {
-                @apply flex relative h-auto lg:flex-row flex-col;
-                & .ant-input {
-                  @apply border-b-0;
-                }
-              }
-              & input {
-                @apply lg:rounded-tl lg:rounded-bl lg:rounded-none text-base h-12 pl-11 mb-0 
-                flex-auto z-[3] pr-[7px] pb-[8px] shadow-none hover:border-gray-400 rounded;
-              }
-              & .ant-input-group-addon {
-                @apply bg-transparent block w-full lg:w-auto;
-              }
-              & button {
-                @apply text-center font-bold h-12 text-base py-3 px-6 lg:rounded-tr lg:rounded-br 
-                   bg-green-500 cursor-pointer leading-none relative mt-4
-                    lg:mt-0 rounded border-none w-full hover:bg-green-600;
-              }
-            }
-          }
-        }
-        & .popular {
-          @apply lg:flex hidden text-sm text-white leading-7 pt-6 font-semibold;
-          & ul {
-            @apply flex w-full ml-3 list-none;
-            & li {
-              @apply flex mr-3 whitespace-nowrap;
-              & a {
-                @apply no-underline leading-6 font-semibold rounded-[40px] 
-                 border px-3 z-[4] hover:bg-white hover:text-gray-900;
-              }
-            }
-          }
-        }
+    .ant-input {
+      // border-bottom-width: 0px;
+      z-index: 0;
+      border-bottom: 0px;
+      padding-top: 0.5rem;
+    }
+  }
+  input {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    height: 3rem;
+    padding-left: 2.75rem;
+    margin-bottom: 0px;
+    flex: 1 1 auto;
+    z-index: 3;
+    padding-right: 7px;
+    padding-bottom: 8px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    &:hover {
+    border-color: rgb(156, 163, 175);
+    }
+    @media (max-width: 1024px) {
+      border-radius: 0.25rem !important;
+    }
+    @media (min-width: 1024px) {
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+  }
+  .ant-input-group-addon {
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    @media (min-width: 1024px) {
+      width: auto;
+    };
+    button {
+      text-align: center;
+      font-weight: 700;
+      height: 3rem;
+      font-size: 1rem;
+      // line-height: 1.5rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      background-color: rgb(34, 197, 94);
+      cursor: pointer;
+      line-height: 1;
+      position: relative;
+      margin-top: 1rem;
+      border-style: none;
+      width: 100%;
+      &:hover {
+      background-color: rgb(22, 163, 74);
+      }
+      @media (max-width: 1024px) {
+        border-radius: 0.25rem !important;
+      }
+      @media (min-width: 1024px) {
+          border-top-right-radius: 0.25rem;
+          border-bottom-right-radius: 0.25rem;
+          margin-top: 0px;
       }
     }
   }
+  
 }
