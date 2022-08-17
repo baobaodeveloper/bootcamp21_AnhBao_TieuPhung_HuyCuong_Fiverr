@@ -13,6 +13,9 @@
     font-size: 0px;
     &.slick-prev {
       left: -17px;
+      @media (min-width: 1024px) {
+      left: -8px;
+      }
       border-radius: 30px;
       &:after {
         content: " ";
@@ -31,6 +34,9 @@
     }
     &.slick-next {
       right: -17px;
+      @media (min-width: 1024px) {
+      right: -8px;
+      }
       border-radius: 30px;
       &:after {
         content: " ";
